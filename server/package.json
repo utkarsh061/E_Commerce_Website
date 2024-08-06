@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend of Utkarsh's E-Commerce_Website",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": " nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "author": "Utkarsh Garg",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4"
+  }
+}

@@ -1,0 +1,66 @@
+import mongoose from "mongoose"
+
+const userSchema = new mongoose.Schema({
+    fullName:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    username:{
+        type:String,
+        required:true,
+        lowercase:true,
+        unique:true,
+        trim:true
+    },
+    email:{
+        type:String,
+        require:true,
+        lowercase:true,
+        unique:true,
+        trim:true
+    },
+    password:{
+        type:String,
+        require:true
+    },
+    phoneNumber:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    addressLine1:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    addressLine2:{
+        type:String,
+        trim:true
+    },
+    pinCode:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    city:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    state:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    country:{
+        type:String,
+        require:true,
+        trim:true
+    },
+    refreshToken:{
+        type:String
+    }
+},{timestamps:true})
+
+export const User = mongoose.model("User",userSchema)

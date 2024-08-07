@@ -1,9 +1,10 @@
 import mongoose from "mongoose"
+import bcrypt from "bcrypt"
 
 const userSchema = new mongoose.Schema({
     fullName:{
         type:String,
-        require:true,
+        required:true,
         trim:true
     },
     username:{
@@ -15,52 +16,27 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type:String,
-        require:true,
+        required:true,
         lowercase:true,
         unique:true,
         trim:true
     },
     password:{
         type:String,
-        require:true
+        required:true
     },
     phoneNumber:{
         type:String,
-        require:true,
+        required:true,
         trim:true
     },
-    addressLine1:{
-        type:String,
-        require:true,
-        trim:true
-    },
-    addressLine2:{
-        type:String,
-        trim:true
-    },
-    pinCode:{
-        type:String,
-        require:true,
-        trim:true
-    },
-    city:{
-        type:String,
-        require:true,
-        trim:true
-    },
-    state:{
-        type:String,
-        require:true,
-        trim:true
-    },
-    country:{
-        type:String,
-        require:true,
-        trim:true
-    },
-    refreshToken:{
-        type:String
-    }
 },{timestamps:true})
+
+userSchema.pre("save", async function(next){
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+    next();
+})
 
 export const User = mongoose.model("User",userSchema)

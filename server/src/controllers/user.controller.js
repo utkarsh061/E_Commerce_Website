@@ -2,6 +2,17 @@ import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { User } from "../models/user.model.js";
+import { options } from "../constants.js";
+
+const generateAccessTokenController = async (userID) => {
+    try {
+        const user = await User.findById(userID)
+        const accessToken = user.generateAccessToken()
+        return accessToken
+    } catch (error) {
+        throw new ApiError(500,"Error While creating Access Token")
+    }
+}
 
 const registerUser = asyncHandler(async (req,res) => {
     const { fullName, username , password , phoneNumber , email } = req.body
@@ -43,4 +54,59 @@ const registerUser = asyncHandler(async (req,res) => {
     ) 
 })
 
-export {registerUser}
+const loginUser = asyncHandler(async (req,res) =>{
+    const {email , password, username } = req.body
+
+    //Checking If Data is Coming 
+    if(!((email || username) && password)){
+        throw new ApiError(400,"All fields are complusary")
+    }
+
+    //Find The user in DB 
+    const user = await User.findOne({
+        $or:[{email},{username}]
+    })
+    
+    //Checking if User data is fetched successfully
+    if(!user){
+        throw new ApiError(404,"User Not Found, Please register")
+    }
+
+    //Checking if Password entered by user is correct
+    const isPasswordCorrect = await user.isPasswordCorrect(password)
+
+    if(!isPasswordCorrect){
+        throw new ApiError(401,"Invalid Credentials")
+    }
+
+    const accessToken = await generateAccessTokenController(user._id)
+    const loggedInUser = await User.findById(user._id).select("-password")
+
+    //sending the response to UI
+    res.status(200).cookie("accessToken",accessToken,options).json(
+        new ApiResponse(
+            200,
+            loggedInUser,
+            "User Logged In successfully"
+        )
+    )
+})
+
+const getUserAccountDetails = asyncHandler(async (req,res) =>{
+    
+    const userDetails = await User.findById(req.user._id).select("-password -address")
+    if(!userDetails){
+        throw new ApiError(500,"Unable to fetch User Data")
+    }
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            userDetails,
+            "User Data fetched Successfully"
+        )
+    )
+
+})
+
+export {registerUser,loginUser,getUserAccountDetails}

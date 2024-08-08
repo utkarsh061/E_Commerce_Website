@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 const userSchema = new mongoose.Schema({
     fullName:{
@@ -28,8 +29,15 @@ const userSchema = new mongoose.Schema({
     phoneNumber:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        unique:true
     },
+    address:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Address"
+        }
+    ]
 },{timestamps:true})
 
 userSchema.pre("save", async function(next){
@@ -38,5 +46,25 @@ userSchema.pre("save", async function(next){
     }
     next();
 })
+
+userSchema.methods.isPasswordCorrect = async function(password){
+    return await bcrypt.compare(password, this.password);
+}
+
+userSchema.methods.generateAccessToken = async function(){
+    const token = jwt.sign(
+        {
+            id:this._id,
+            fullName:this.fullName,
+            username:this.username,
+            email:this.email
+        },
+        process.env.JWT_KEY,
+        {
+            expiresIn:"1d"
+        }
+    )
+    return token
+}
 
 export const User = mongoose.model("User",userSchema)

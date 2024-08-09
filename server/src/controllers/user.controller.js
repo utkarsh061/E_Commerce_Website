@@ -107,6 +107,33 @@ const getUserAccountDetails = asyncHandler(async (req,res) =>{
         )
     )
 
+}) 
+
+const changePassword = asyncHandler(async (req,res) => { 
+    const { email, newPassword, confirmNewPassword} = req.body
+
+    if(!(confirmNewPassword && newPassword && email)){
+        throw new ApiError(400,"All fields are Required")
+    }  
+
+    if(newPassword != confirmNewPassword){
+        throw new ApiError(400,"Password should match")
+    }
+    
+    const user = await User.findOne({email})
+    if(!user){
+        throw new ApiError(400,"User Not Found !!")
+    } 
+    user.password = newPassword
+    user.save({validateBeforeSave:false})
+   
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            {},
+            "Password changed Successfully"
+        )
+    )
 })
 
-export {registerUser,loginUser,getUserAccountDetails}
+export {registerUser,loginUser,getUserAccountDetails,changePassword}

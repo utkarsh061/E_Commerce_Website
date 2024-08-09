@@ -32,12 +32,6 @@ const userSchema = new mongoose.Schema({
         trim:true,
         unique:true
     },
-    address:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Address"
-        }
-    ]
 },{timestamps:true})
 
 userSchema.pre("save", async function(next){

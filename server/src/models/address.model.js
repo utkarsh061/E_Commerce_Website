@@ -28,7 +28,7 @@ const addressSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    userAddress:{
+    userId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     }

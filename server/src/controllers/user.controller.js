@@ -3,6 +3,8 @@ import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { User } from "../models/user.model.js";
 import { options } from "../constants.js";
+import { Address } from "../models/address.model.js";
+import mongoose from "mongoose";
 
 const generateAccessTokenController = async (userID) => {
     try {
@@ -23,7 +25,9 @@ const registerUser = asyncHandler(async (req,res) => {
     }
 
     //If User is already Present
-    const userAlreadyPresent = await User.findOne({username})
+    const userAlreadyPresent = await User.findOne({
+        $or:[{email},{username},{phoneNumber}]
+    })
     if(userAlreadyPresent){
         throw new ApiError(400,"User already Registered")
     }
@@ -45,7 +49,7 @@ const registerUser = asyncHandler(async (req,res) => {
     }
 
     //sending Response to UI
-    res.status(200).json(
+    return res.status(200).json(
         new ApiResponse(
             200,
             createdUser,
@@ -83,7 +87,7 @@ const loginUser = asyncHandler(async (req,res) =>{
     const loggedInUser = await User.findById(user._id).select("-password")
 
     //sending the response to UI
-    res.status(200).cookie("accessToken",accessToken,options).json(
+    return res.status(200).cookie("accessToken",accessToken,options).json(
         new ApiResponse(
             200,
             loggedInUser,
@@ -99,7 +103,7 @@ const getUserAccountDetails = asyncHandler(async (req,res) =>{
         throw new ApiError(500,"Unable to fetch User Data")
     }
 
-    res.status(200).json(
+    return res.status(200).json(
         new ApiResponse(
             200,
             userDetails,
@@ -109,7 +113,7 @@ const getUserAccountDetails = asyncHandler(async (req,res) =>{
 
 }) 
 
-const changePassword = asyncHandler(async (req,res) => { 
+const forgotPassword = asyncHandler(async (req,res) => { 
     const { email, newPassword, confirmNewPassword} = req.body
 
     if(!(confirmNewPassword && newPassword && email)){
@@ -127,7 +131,7 @@ const changePassword = asyncHandler(async (req,res) => {
     user.password = newPassword
     user.save({validateBeforeSave:false})
    
-    res.status(200).json(
+    return res.status(200).json(
         new ApiResponse(
             200,
             {},
@@ -136,4 +140,63 @@ const changePassword = asyncHandler(async (req,res) => {
     )
 })
 
-export {registerUser,loginUser,getUserAccountDetails,changePassword}
+const getDeliveryAddress = asyncHandler(async (req,res) => {
+
+    const userAddresses = await Address.aggregate([
+        {
+            $match:{
+                userId:new mongoose.Types.ObjectId(req.user._id)
+            }
+        },
+        {
+            $project:{
+                addressLine1:1,
+                addressLine2:1,
+                city:1,
+                district:1,
+                state:1,
+                country:1,
+                pinCode:1
+        }
+        }
+    ])
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            userAddresses,
+            "User Address Fetched Successfully"
+        )
+    )
+})
+
+const addDeliveryAddress = asyncHandler(async (req,res) => {
+    const  {addressLine1,addressLine2,city,district,state,country,pinCode} = req.body
+
+    if([addressLine1,city,district,state,country,pinCode].some((item) => {
+        item?.trim === ""
+    })){
+        throw new ApiError(400,"All fields are Mandatory")
+    }
+
+    const address = await Address.create({
+        addressLine1,
+        addressLine2,
+        city,
+        district,
+        state,
+        country,
+        pinCode,
+        userId:req.user._id
+    })
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            address,
+            "New Address Added"
+        )
+    )
+
+})
+
+export {registerUser,loginUser,getUserAccountDetails,forgotPassword,getDeliveryAddress,addDeliveryAddress}

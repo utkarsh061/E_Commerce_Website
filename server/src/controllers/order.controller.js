@@ -25,7 +25,7 @@ const placeOrder = asyncHandler(async (req,res) => {
                 orderPrice:orders[i]?.orderPrice,
                 quantity:orders[i]?.quantity,
                 category:orders[i]?.category,
-                deliveryAddress:orders[i]?.deliveryAddress,
+                deliveryAddress:orders[i]?.deliveryAddress._id,
                 deliveryStatus:"Order Placed",
                 user:req.user._id
              })

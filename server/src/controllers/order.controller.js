@@ -2,7 +2,7 @@ import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { Order } from "../models/order.model.js";
-import { User } from "../models/user.model.js";
+import mongoose from "mongoose";
 
 const placeOrder = asyncHandler(async (req,res) => {
     const { orders } = req.body  //expecting orders in an array
@@ -27,7 +27,7 @@ const placeOrder = asyncHandler(async (req,res) => {
                 category:orders[i]?.category,
                 deliveryAddress:orders[i]?.deliveryAddress._id,
                 deliveryStatus:"Order Placed",
-                user:req.user._id
+                userId:req.user._id
              })
         } catch (error) {
             throw new ApiError(500,`Internal server Error !! Error While Placing ${orders[i].title}`)
@@ -43,4 +43,30 @@ const placeOrder = asyncHandler(async (req,res) => {
     )
 })
 
-export { placeOrder }
+const orderHistory = asyncHandler(async (req,res) => {
+    const orders = await Order.aggregate([
+        {
+            $match:{
+                userId:new mongoose.Types.ObjectId(req.user._id)
+            }
+        },
+        {
+            $project:{
+                title:1,
+                orderPrice:1,
+                quantity:1,
+                category:1
+            }
+        }
+    ])
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            orders,
+            "Order History Fetched Successfully"
+        )
+    )
+})
+
+export { placeOrder,orderHistory }

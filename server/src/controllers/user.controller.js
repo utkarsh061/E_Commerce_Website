@@ -199,4 +199,34 @@ const addDeliveryAddress = asyncHandler(async (req,res) => {
 
 })
 
-export {registerUser,loginUser,getUserAccountDetails,forgotPassword,getDeliveryAddress,addDeliveryAddress}
+const updateAccountDetails = asyncHandler(async (req,res) => {
+    const { fullName,email,phoneNumber } = req.body
+     const fields = {
+        fullName:fullName,
+        email:email,
+        phoneNumber:phoneNumber
+     }
+
+     //Removing Empty or undefined fields
+    Object.keys(fields).forEach((item) => {
+        if(fields[item] === undefined || fields[item].trim() === ""){
+            delete fields[item]
+        }
+    })
+    //checking if there is any field to update
+    if(Object.keys(fields).length === 0){
+        throw new ApiError(400, "No fields To Update")
+    }
+    //Updating User Data
+    const updatedData = await User.findByIdAndUpdate(req.user._id,fields,{new:true})
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            updatedData,
+            "User Data Updated Successfully"
+        )
+    )
+})
+
+export {registerUser,loginUser,getUserAccountDetails,forgotPassword,getDeliveryAddress,addDeliveryAddress,updateAccountDetails}

@@ -6,7 +6,7 @@ export const products = [
         rating:"4.2",
         review:"25",
         price:"Rs 999.00",
-        category:["Small","Medium","Large","XL","XXL"],
+        category:["S","M","L","XL","XXL"],
         description:"Give your summer wardrobe a style upgrade with WROGN Men Red Shirt. Team it with  a denims for an evening out with the guyz."
     },
     {
@@ -26,7 +26,7 @@ export const products = [
         rating:"4.7",
         review:"159",
         price:"Rs 1,299.00",
-        category:["Small","Medium","Large","XL","XXL"],
+        category:["S","M","L","XL","XXL"],
         description:"Give your summer wardrobe a style upgrade with HRX Men's SweatShirts. Team it with a denims for an evening out with the guyz."
     },
     {
@@ -55,7 +55,7 @@ export const products = [
         rating:"4.4",
         review:"259",
         price:"Rs 899.00",
-        category:["Small","Medium","Large","XL","XXL"],
+        category:["S","M","L","XL","XXL"],
         description:"Give your summer wardrobe a style upgrade with HRX Men's Active T-shirt. Team it with a pair of shorts for your morning workout or a denims for an evening out with the guyz."
     },
     {
@@ -84,7 +84,7 @@ export const products = [
         rating:"3.9",
         review:"131",
         price:"Rs 2,999.00",
-        category:["Small","Medium","Large","XL","XXL"],
+        category:["S","M","L","XL","XXL"],
         description:"Give your summer wardrobe a style upgrade with Faux Leather Jacket. Team it with a denims for an evening out with the guyz."
     },
     {
@@ -94,7 +94,7 @@ export const products = [
         rating:"4.4",
         review:"97",
         price:"Rs 3,999.00",
-        category:["Small","Medium","Large","XL","XXL"],
+        category:["S","M","L","XL","XXL"],
         description:"Give your summer wardrobe a style upgrade with Navy Blue Jacket. Team it with a Formal Pants for any Formal Meeting."
     },
     {

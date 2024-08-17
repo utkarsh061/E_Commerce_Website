@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { setCartItems } from "@/app/redux/applicationSlice";
+import NoData from "../NoData";
 
 function Cart(){
     const {cartItems} = useSelector((state) => state.application)
     const dispatch = useDispatch()
-    const [subTotal,setSubTotal] = useState("")
-    const [tax,setTax] = useState("0")
     const [total,setTotal] = useState("0")
 
     useEffect(() => {
@@ -18,12 +17,7 @@ function Cart(){
             let amount = parseFloat(parts[1].replace(/,/g, ''));
             sum=sum+amount;
         })
-        let result = `Rs ${sum.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        let tax= sum*0.01
-        let taxAmount = `Rs ${tax.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        let totalAmount = `Rs ${(tax+sum).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        setSubTotal(result)
-        setTax(taxAmount)
+        let totalAmount = `Rs ${(sum).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         setTotal(totalAmount)
     },[cartItems])
 
@@ -59,13 +53,14 @@ function Cart(){
     }
 
     return (
-        <div className="mx-72 mt-12 mb-40">
+        <div className="mx-72 mt-12 mb-20">
             <div className="bg-black text-white flex px-2 py-0.5 text-center rounded">
                 <h1 className="basis-3/5">Product</h1>
                 <h1 className="basis-1/5">Quantity</h1>
                 <h1 className="basis-1/5">Subtotal</h1>
             </div>
-            {cartItems?.map((item,index) => {
+            { cartItems?.length === 0 ? <NoData text="No Items In Cart" height="h-52"/>
+            : cartItems?.map((item,index) => {
                 return (
                     <div className="flex">
                         <div className="basis-3/5 flex">
@@ -96,17 +91,9 @@ function Cart(){
                 ) 
             })
             }
-            <div className="flex">
+            { cartItems?.length != 0 && <div className="flex">
                 <div className="basis-3/5"></div>
                 <div className="basis-2/5 border-t-2 border-black">
-                    <div className="mx-2 my-2 flex">
-                        <h1 className="basis-1/2">Sub Total</h1>
-                        <p className="basis-1/2">{subTotal}</p>
-                    </div>
-                    <div className="mx-2 my-2 flex">
-                        <h1 className="basis-1/2">Tax</h1>
-                        <p className="basis-1/2">{tax}</p>
-                    </div>
                     <div className="mx-2 my-2 flex">
                         <h1 className="basis-1/2">Total</h1>
                         <p className="basis-1/2">{total}</p>
@@ -119,7 +106,7 @@ function Cart(){
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Footer() {
   return (
-      <div className="flex flex-wrap px-20 py-16 bg-black text-white absolute">
+      <div className="flex flex-wrap px-20 py-16 bg-black text-white absolute mt-8">
         <div className="basis-2/6">
           <h3 className="font-bold">Download Our App</h3>
           <p className="text-sm text-gray-600 mt-4">

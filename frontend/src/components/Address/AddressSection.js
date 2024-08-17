@@ -1,12 +1,10 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
 
 function Addresssection(props){
     const { handleNewAddressClick } = props
     const [addressRadio,setAddressRadio] = useState(null)
-    const [newAddress,setNewAddress] = useState(false)
     const addressdetails = [
         {
             addressLine1:"Shivraj Nagar Colony",

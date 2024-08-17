@@ -59,7 +59,7 @@ function Cart(){
     }
 
     return (
-        <div className="mx-72 my-12">
+        <div className="mx-72 mt-12 mb-40">
             <div className="bg-black text-white flex px-2 py-0.5 text-center rounded">
                 <h1 className="basis-3/5">Product</h1>
                 <h1 className="basis-1/5">Quantity</h1>

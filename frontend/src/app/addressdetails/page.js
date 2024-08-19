@@ -6,6 +6,7 @@ import { useState } from "react"
 
 function AddressSectionMain(){
     const [addNewAddress,setNewAddress] = useState(false)
+    const [isAllNewAddressFieldsSelected , setIsAllNewAddressFieldsSelected] = useState(false)
 
     const handleNewAddressClick = () => {
         setNewAddress(!addNewAddress)
@@ -19,6 +20,8 @@ function AddressSectionMain(){
 
                 <Addresssection
                     handleNewAddressClick ={handleNewAddressClick}
+                    isAllNewAddressFieldsSelected={isAllNewAddressFieldsSelected}
+                    setIsAllNewAddressFieldsSelected={setIsAllNewAddressFieldsSelected}
                 />
                 }
         </>

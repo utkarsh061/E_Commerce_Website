@@ -8,6 +8,7 @@ function SingleProductInfo(props) {
   const { individualPageItem } = props;
   const { cartItems } = useSelector((state) => state.application);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [isCategorySelected,setIsCategorySelected] = useState(true)
   const dispatch = useDispatch();
 
   const handleClick = (individualPageItem) => {
@@ -15,10 +16,14 @@ function SingleProductInfo(props) {
     selectedDataObj.numberOfItems = 1;
     selectedDataObj.totalItemPrice = individualPageItem.price;
     selectedDataObj.categorySelected = selectedCategory;
-    let data = [];
-    data.push(...cartItems);
-    data.push(selectedDataObj);
-    dispatch(setCartItems(data));
+    if(Object.values(selectedDataObj.categorySelected).length === 0){
+      setIsCategorySelected(false)
+    }else{
+      let data = [];
+      data.push(...cartItems);
+      data.push(selectedDataObj);
+      dispatch(setCartItems(data));
+    }
   };
 
   return individualPageItem?.id ? (
@@ -35,8 +40,8 @@ function SingleProductInfo(props) {
         </h1>
         {individualPageItem.category && (
           <select
-            className="mt-4 px-1 py-1 rounded border border-black"
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            className={`mt-4 px-1 py-1 rounded border border-black ${!isCategorySelected && "Border-2 border-red-500"}`}
+            onChange={(e) => (setSelectedCategory(e.target.value),setIsCategorySelected(true))}
           >
             <option value="" disabled selected>
               Select option
@@ -46,6 +51,7 @@ function SingleProductInfo(props) {
             ))}
           </select>
         )}
+        {!isCategorySelected && <p className="text-red-500">Select category</p>}
         <h1 className="mt-4 font-extrabold tracking-wide text-xl">
           Product Details
           <FontAwesomeIcon icon={faIndent} className="ml-2 text-orange-600" />

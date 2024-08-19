@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import NoData from "../NoData";
+import { NumberToString } from "../globalUtils";
 
 function Cart(){
     const {cartItems} = useSelector((state) => state.application)
@@ -13,27 +14,26 @@ function Cart(){
     useEffect(() => {
         let sum = 0;
         cartItems?.map((item) => {
-            let parts = item.totalItemPrice.split(" ");
-            let amount = parseFloat(parts[1].replace(/,/g, ''));
-            sum=sum+amount;
+            // let parts = item.totalItemPrice.split(" ");
+            // let amount = parseFloat(parts[1].replace(/,/g, ''));
+            sum=sum+item.totalItemPrice;
         })
-        let totalAmount = `Rs ${(sum).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        setTotal(totalAmount)
+        setTotal(sum)
     },[cartItems])
 
     const getPrice = (price,multiplyNumber) => {
-        let parts = price.split(" ");
-        let amount = parseFloat(parts[1].replace(/,/g, ''));
-        let multipliedAmount = amount * multiplyNumber ;
-        let result = `Rs ${multipliedAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        return result
+        // let parts = price.split(" ");
+        // let amount = parseFloat(parts[1].replace(/,/g, ''));
+        let multipliedAmount = price * multiplyNumber ;
+        // let result = `Rs ${multipliedAmount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        return multipliedAmount
     }
 
     const handleChange = (e,id) => {
         let index = cartItems?.findIndex( item => item.id === id);
         let newPrice = getPrice(cartItems[index].price,e.target.value)
             let updatedObj = {
-                ...cartItems[index],
+                ...cartItems[index], 
                 [e.target.name] : e.target.value,
                 "totalItemPrice": newPrice
             }
@@ -70,7 +70,7 @@ function Cart(){
                                     <h2>{item.title}</h2>
                                     <h3 className="ml-1">({item.categorySelected})</h3>   
                                 </div>
-                                <h3>{item.price}</h3>
+                                <h3>{NumberToString(item.price)}</h3>
                                 <p className="text-red-600 hover:cursor-pointer"
                                 onClick={() => handleRemoveClick(index)}
                                 >Remove</p>
@@ -79,14 +79,14 @@ function Cart(){
                         <div className="basis-1/5">
                             <input 
                             type="number" 
-                            value ={item.numberOfItems}
+                            value ={item.quantity}
                             min="1"
                             className="border border-black flex items-center my-8 w-10 px-1"
-                            name="numberOfItems"
+                            name="quantity"
                             onChange={(e) => handleChange(e,item.id)}
                             />
                         </div>
-                        <div className="basis-1/5 my-8">{item.totalItemPrice}</div>
+                        <div className="basis-1/5 my-8">{NumberToString(item.totalItemPrice)}</div>
                     </div>
                 ) 
             })
@@ -96,7 +96,7 @@ function Cart(){
                 <div className="basis-2/5 border-t-2 border-black">
                     <div className="mx-2 my-2 flex">
                         <h1 className="basis-1/2">Total</h1>
-                        <p className="basis-1/2">{total}</p>
+                        <p className="basis-1/2">{NumberToString(total)}</p>
                     </div>
                     <div className="pt-6 flex justify-end mr-12">
                         <Link href={"/addressdetails"} className="text-white bg-black  hover:bg-gray-700 px-12 py-2 rounded-3xl">

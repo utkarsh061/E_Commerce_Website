@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import NoData from "../NoData"
 
 function Addresssection(props){
     const { handleNewAddressClick } = props
-    const [addressRadio,setAddressRadio] = useState(null)
+    const [addressRadio,setAddressRadio] = useState("0")
+    const [isOldAddressPresent,setisOldAddressPresent] =useState(false)
     const addressdetails = [
         {
             addressLine1:"Shivraj Nagar Colony",
@@ -28,12 +30,19 @@ function Addresssection(props){
             pinCode:"221005"
         }
     ]
+    
+    useEffect(() => {
+        if(addressdetails.length != 0){
+            setisOldAddressPresent(true)
+        }
+    },[])
+
     const handleRadioChange = (event) =>{
         setAddressRadio(event.target.value)
     }
     return (
         <div className="mx-72 my-12">
-            {addressdetails?.map((item,index) => {
+            { isOldAddressPresent ? addressdetails?.map((item,index) => {
                 return (
                     <div className="px-2 py-2 flex flex-row">
                     <input
@@ -52,7 +61,7 @@ function Addresssection(props){
                     </span>
                 </div>
                 )
-            })} 
+            }): <NoData text="No Saved Address" height="h-48"/>} 
             <p className="flex justify-end underline text-blue-600">
             <span onClick={handleNewAddressClick} className="cursor-pointer">Add New Address</span></p>
             <div className="flex justify-end mt-4">

@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import { NumberToString } from '../globalUtils';
 
 function IndividualItem(props){
     const {imgURL,title,rating,review,price,handleClick} = props
@@ -26,7 +27,7 @@ function IndividualItem(props){
                     | ({review})
                     </span>
                 </div>
-                <div className="text-gray-600 text-left pl-4 mb-2 text-sm">{price}</div>
+                <div className="text-gray-600 text-left pl-4 mb-2 text-sm">{NumberToString(price)}</div>
             </div>
         </Link>
         </>

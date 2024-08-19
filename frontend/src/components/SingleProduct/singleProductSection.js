@@ -3,6 +3,7 @@ import { faIndent } from "@fortawesome/free-solid-svg-icons";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { NumberToString } from "../globalUtils";
 
 function SingleProductInfo(props) {
   const { individualPageItem } = props;
@@ -13,16 +14,36 @@ function SingleProductInfo(props) {
 
   const handleClick = (individualPageItem) => {
     let selectedDataObj = { ...individualPageItem };
-    selectedDataObj.numberOfItems = 1;
-    selectedDataObj.totalItemPrice = individualPageItem.price;
-    selectedDataObj.categorySelected = selectedCategory;
+      selectedDataObj.categorySelected = selectedCategory;
+      let postion;
     if(Object.values(selectedDataObj.categorySelected).length === 0){
       setIsCategorySelected(false)
     }else{
-      let data = [];
-      data.push(...cartItems);
-      data.push(selectedDataObj);
-      dispatch(setCartItems(data));
+      const itemAlreadyInCart = cartItems?.filter((item,index) => {
+        if (item.id === selectedDataObj.id && item.categorySelected === selectedDataObj.categorySelected) {
+          postion = index;  
+          return true;  
+      }else{
+        return false
+      }
+      })
+      if(itemAlreadyInCart?.length !=0){
+        let data = cartItems.map((item,index) => {
+          if(index == postion){
+            return {...item,quantity:item.quantity+1,totalItemPrice:(item.quantity+1)*item.price}
+          }
+          return item
+        })
+        console.log(data)
+        dispatch(setCartItems(data))  
+      }else{
+        selectedDataObj.quantity = 1  ;
+        selectedDataObj.totalItemPrice = individualPageItem.price*selectedDataObj.quantity;
+        let data = [];
+        data.push(...cartItems);
+        data.push(selectedDataObj);
+        dispatch(setCartItems(data));
+      }
     }
   };
 
@@ -36,7 +57,7 @@ function SingleProductInfo(props) {
           {individualPageItem.title}
         </h1>
         <h1 className="mt-4 font-bold text-gray-700 text-xl">
-          {individualPageItem.price}
+          {NumberToString(individualPageItem.price)}
         </h1>
         {individualPageItem.category && (
           <select

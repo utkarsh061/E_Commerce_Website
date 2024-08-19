@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIndent } from "@fortawesome/free-solid-svg-icons";
+import { faIndent,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -10,6 +10,7 @@ function SingleProductInfo(props) {
   const { cartItems } = useSelector((state) => state.application);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isCategorySelected,setIsCategorySelected] = useState(true)
+  const [addedToCard , setAddedToCard] = useState(false)
   const dispatch = useDispatch();
 
   const handleClick = (individualPageItem) => {
@@ -44,6 +45,10 @@ function SingleProductInfo(props) {
         data.push(selectedDataObj);
         dispatch(setCartItems(data));
       }
+      setAddedToCard(true)
+      setTimeout(() => {
+        setAddedToCard(false)
+      },2000)
     }
   };
 
@@ -90,6 +95,12 @@ function SingleProductInfo(props) {
             className="hover:cursor-pointer"
           ></input>
         </div>
+          {addedToCard && 
+          <>
+          <FontAwesomeIcon icon={faCheck} className="ml-4 text-green-600" />
+          <span className="text-green-500 px-1 italic mt-1">Added To Card</span>
+          </>
+          }
         <div className="pt-6"></div>
       </div>
     </div>

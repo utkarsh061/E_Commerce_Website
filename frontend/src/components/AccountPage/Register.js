@@ -6,6 +6,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function Register() {
   const [isHidePassword,setIsHidePassword] = useState(true)
+  const [emptyFields, setEmptyFields] = useState(false);
   const [registerUserData, setRegisterUserData] = useState({
     fullName: "",
     username: "",
@@ -24,36 +25,58 @@ function Register() {
 
   const handleRegister = () => {
     event.preventDefault();
+
+    if([registerUserData.email,
+      registerUserData.fullName,
+      registerUserData.password,
+      registerUserData.phoneNumber,
+      registerUserData.username
+    ].some( item => item.trim() === "")) setEmptyFields(true) 
+    else setEmptyFields(false)
+
     console.log("Register form data:", registerUserData);
   };
   return (
     <div className="mx-16 my-6">
       <div className="mt-8">
+      {emptyFields && (
+              <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
+                All fields are required
+              </p>
+            )}
         <form onSubmit={() => handleRegister()}>
           <input
             placeholder="Full Name"
-            className={`border border-black py-1 px-2  rounded w-full`}
+            className={`border mt-4 ${
+                  emptyFields ? "border-red-500" : "border-black"
+                } py-1 px-2 rounded w-full`}
             name="fullName"
             value={registerUserData.fullName}
             onChange={handleInputChange}
           />
           <input
             placeholder="Username"
-            className={`border border-black py-1 px-2 mt-4 rounded w-full`}
+            className={`border mt-4 ${
+                  emptyFields ? "border-red-500" : "border-black"
+                } py-1 px-2 rounded w-full`}
             name="username"
             value={registerUserData.username}
             onChange={handleInputChange}
           />
           <input
             placeholder="Mobile Number"
-            className={`border border-black py-1 px-2 mt-4 rounded w-full`}
+            className={`border mt-4 ${
+                  emptyFields ? "border-red-500" : "border-black"
+                } py-1 px-2 rounded w-full`}
             name="phoneNumber"
             value={registerUserData.phoneNumber}
             onChange={handleInputChange}
           />
           <input
             placeholder="Email"
-            className={`border border-black py-1 px-2 mt-4 rounded w-full`}
+            className={`border mt-4 ${
+                  emptyFields ? "border-red-500" : "border-black"
+                } py-1 px-2 rounded w-full`}
             name="email"
             value={registerUserData.email}
             onChange={handleInputChange}
@@ -62,7 +85,9 @@ function Register() {
           <input
             placeholder="Password"
             type={isHidePassword ? "password" : "text"}
-            className={`border border-black py-1 px-2 mt-4 rounded w-full`}
+            className={`border mt-4 ${
+                  emptyFields ? "border-red-500" : "border-black"
+                } py-1 px-2 rounded w-full`}
             name="password"
             value={registerUserData.password}
             onChange={handleInputChange}

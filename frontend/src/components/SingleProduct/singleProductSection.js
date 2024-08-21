@@ -77,7 +77,7 @@ function SingleProductInfo(props) {
             ))}
           </select>
         )}
-        {!isCategorySelected && <p className="text-red-500">Select category</p>}
+        {!isCategorySelected && <p className="text-red-600 font-medium text-xs ml-2">Select category</p>}
         <h1 className="mt-4 font-extrabold tracking-wide text-xl">
           Product Details
           <FontAwesomeIcon icon={faIndent} className="ml-2 text-orange-600" />

@@ -49,7 +49,7 @@ function AddNewAddress(props) {
     <div className="flex flex-col mx-72 my-12">
       {isFieldEmpty && (
         <div className="mt-2 flex justify-around">
-          <label className="text-red-500 font-medium">
+          <label className="text-red-600 font-medium text-xs ">
             All (*) fields are Mandatory
           </label>
         </div>

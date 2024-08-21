@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function Register() {
+  const [isHidePassword,setIsHidePassword] = useState(true)
   const [registerUserData, setRegisterUserData] = useState({
     fullName: "",
     username: "",
@@ -55,13 +58,30 @@ function Register() {
             value={registerUserData.email}
             onChange={handleInputChange}
           />
+          <div className="relative flex items-center">
           <input
             placeholder="Password"
+            type={isHidePassword ? "password" : "text"}
             className={`border border-black py-1 px-2 mt-4 rounded w-full`}
             name="password"
             value={registerUserData.password}
             onChange={handleInputChange}
           />
+          <button
+                  type="button"
+                  onClick={ () => setIsHidePassword(!isHidePassword)}
+                  className="absolute right-2"
+                >
+                  <FontAwesomeIcon
+                    icon={
+                      isHidePassword
+                        ? faEyeSlash
+                        : faEye
+                    }
+                    className="mt-5 text-gray-500"
+                  ></FontAwesomeIcon>
+                </button>
+                </div>
           <div className=" mt-6 text-white bg-gray-700  hover:bg-black px-6 py-2 w-full rounded-3xl flex justify-center">
             <input
               type="submit"

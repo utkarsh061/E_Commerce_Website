@@ -3,7 +3,7 @@ import { faIndent,faCheck } from "@fortawesome/free-solid-svg-icons";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { NumberToString } from "../globalUtils";
+import { NumberToString } from "../../app/globalUtils";
 
 function SingleProductInfo(props) {
   const { individualPageItem } = props;

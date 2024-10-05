@@ -1,11 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import ForgotPassword from "./ForgetPassword";
+import { LoginUser } from "@/app/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [emptyFields, setEmptyFields] = useState(false);
+  const [isValidCredentials , setIsValidCredentials] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  useRouter
   const [isForgetPassword, setIsForgetPassword] = useState(false);
   const [isHidePassword, setIsHidePassword] = useState({
     loginPagePassword: true,
@@ -22,9 +29,11 @@ function Login() {
   };
   const handleFormSubmit = () => {
     event.preventDefault();
-    console.log("Login Form data:", loginFormData);
     if([loginFormData.email,loginFormData.password].some(item => item.trim() === "")) setEmptyFields(true)
-      else setEmptyFields(false)
+      else {
+        setEmptyFields(false)
+        setIsValidCredentials(LoginUser(loginFormData,dispatch,router)) 
+      }
   };
 
   const handlePasswordHide = (name) => {
@@ -52,9 +61,9 @@ function Login() {
           />
         ) : (
           <>
-            {emptyFields && (
+            {(emptyFields || isValidCredentials) && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
-                All fields are required
+                {isValidCredentials ? (emptyFields ? "All fields are required" : "Invalid Credentials") : "All fields are required"}
               </p>
             )}
             <form onSubmit={() => handleFormSubmit()}>
@@ -62,7 +71,7 @@ function Login() {
                 placeholder="Email Id"
                 type="email"
                 className={`border ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  (emptyFields || isValidCredentials) ? "border-red-500" : "border-black"
                 } py-1 px-2 rounded w-full`}
                 id="loginEmail"
                 name="email"
@@ -78,7 +87,7 @@ function Login() {
                   value={loginFormData.password}
                   onChange={handleInputChange}
                   className={`border ${
-                    emptyFields ? "border-red-500" : "border-black"
+                    (emptyFields || isValidCredentials) ? "border-red-500" : "border-black"
                   } py-1 px-2 mt-4 rounded w-full`}
                 />
                 <button

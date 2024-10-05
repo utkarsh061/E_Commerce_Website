@@ -4,7 +4,8 @@ export const applicationSlice = createSlice({
     name:"application",
     initialState:{
         individualPageItem:{},
-        cartItems:[]
+        cartItems:[],
+        isUserLoggedIn:false,
     },
     reducers:{
         setIndividualPageItem: (state,{payload}) => {
@@ -12,13 +13,17 @@ export const applicationSlice = createSlice({
         },
         setCartItems: (state,{payload}) => {
             state.cartItems = payload;
+        },
+        setIsUserLoggedIn: (state,{payload}) => {
+            state.isUserLoggedIn = payload;
         }
     }
 });
 
 export const {
     setIndividualPageItem,
-    setCartItems
+    setCartItems,
+    setIsUserLoggedIn
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

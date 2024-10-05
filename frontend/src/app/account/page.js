@@ -2,12 +2,15 @@
 import AccountDetails from "@/components/AccountPage/AccountDetails/AccountDetails";
 import Login from "@/components/AccountPage/Login";
 import Register from "@/components/AccountPage/Register";
-import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 function AccountPage() {
   const [isRegisterPage, setIsRegisterPage] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const applicationData = useSelector((state) => state.application);
+  const { isUserLoggedIn } = applicationData;
+
 
   const handleClick = (data) => {
     if (data === "Login") {
@@ -19,7 +22,7 @@ function AccountPage() {
   };
   return (
     <>
-      {isLoggedIn ? (
+      {isUserLoggedIn ? (
         <AccountDetails />
       ) : (
         <div className="my-12 bg-gradient-to-l from-black to-gray-700 flex flex-wrap">
@@ -43,7 +46,7 @@ function AccountPage() {
                   Register
                 </h3>
               </div>
-              {isRegisterPage ? <Register /> : <Login />}
+              {isRegisterPage ? <Register /> : <Login/>}
             </div>
           </div>
           <div className="w-1/2 h-1/2 basis-1/2">

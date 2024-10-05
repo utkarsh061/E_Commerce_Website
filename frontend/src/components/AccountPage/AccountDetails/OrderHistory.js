@@ -4,24 +4,24 @@ import NoData from "@/components/NoData";
 
 function OrderHistory() {
   const orders = [
-    {
-      title: "Utkarsh Garg",
-      orderPrice: "RS. 700",
-      quantity: 2,
-      category: "S",
-    },
-    {
-      title: "Utkarsh Garg",
-      orderPrice: "RS. 700",
-      quantity: 2,
-      category: "S",
-    },
-    {
-      title: "Utkarsh Garg",
-      orderPrice: "RS. 700",
-      quantity: 2,
-      category: "S",
-    },
+    // {
+    //   title: "Utkarsh Garg",
+    //   orderPrice: "RS. 700",
+    //   quantity: 2,
+    //   category: "S",
+    // },
+    // {
+    //   title: "Utkarsh Garg",
+    //   orderPrice: "RS. 700",
+    //   quantity: 2,
+    //   category: "S",
+    // },
+    // {
+    //   title: "Utkarsh Garg",
+    //   orderPrice: "RS. 700",
+    //   quantity: 2,
+    //   category: "S",
+    // },
   ];
 
   return (

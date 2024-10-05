@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import { NumberToString } from '../globalUtils';
+import { NumberToString } from '../../app/globalUtils';
 
 function IndividualItem(props){
     const {imgURL,title,rating,review,price,handleClick} = props

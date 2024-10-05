@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import NoData from "../NoData";
-import { NumberToString } from "../globalUtils";
+import { NumberToString } from "../../app/globalUtils";
 
 function Cart(){
     const {cartItems} = useSelector((state) => state.application)

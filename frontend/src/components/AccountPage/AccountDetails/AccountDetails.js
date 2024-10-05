@@ -7,7 +7,6 @@ function AccountDetails(){
     const [ inputDisabled,setInputDisabled] = useState(true)
 
     const handleEditClick = () => {
-        
         if(inputDisabled) setInputDisabled(false)
         else setInputDisabled(true)
     }

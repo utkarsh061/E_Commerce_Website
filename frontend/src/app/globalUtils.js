@@ -4,11 +4,12 @@ export const NumberToString = (price) => {
     return `Rs ${price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
-export const postService = async (apiURL, payload) => {
+export const postService = async (apiURL, payload,additionalHeaders = {}) => {
     try {
         const result = await axios.post(apiURL,payload,{
             headers:{
                 "Content-Type":"application/json",
+                ...additionalHeaders
             },
         });
         return result;
@@ -18,12 +19,13 @@ export const postService = async (apiURL, payload) => {
     }
 }
 
-export const getService = async (apiURL) => {
+export const getService = async (apiURL,additionalHeaders = {}) => {
     try {
         const result = await axios.get(apiURL,{
             headers:{
                 "Content-Type":"application/json",
-            },
+                ...additionalHeaders
+            }
         });
         return result;
     } catch (error) {

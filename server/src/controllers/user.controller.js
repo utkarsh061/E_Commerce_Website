@@ -85,12 +85,13 @@ const loginUser = asyncHandler(async (req,res) =>{
 
     const accessToken = await generateAccessTokenController(user._id)
     const loggedInUser = await User.findById(user._id).select("-password")
-
+    const loggedInUserObj = loggedInUser.toObject();  
+    loggedInUserObj.accessToken = accessToken;
     //sending the response to UI
     return res.status(200).cookie("accessToken",accessToken,options).json(
         new ApiResponse(
             200,
-            loggedInUser,
+            loggedInUserObj,
             "User Logged In successfully"
         )
     )

@@ -63,7 +63,7 @@ function Login() {
           <>
             {(emptyFields || isValidCredentials) && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
-                {isValidCredentials ? (emptyFields ? "All fields are required" : "Invalid Credentials") : "All fields are required"}
+                {emptyFields ? "All fields are required" : (isValidCredentials && "Invalid Credentials")}
               </p>
             )}
             <form onSubmit={() => handleFormSubmit()}>

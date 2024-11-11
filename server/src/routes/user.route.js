@@ -15,7 +15,7 @@ router.post("/login",loginUser)
 router.post("/forgotPassword",forgotPassword) 
 
 //secure Routes
-router.post("/accountDetails",verifyUserJWT,getUserAccountDetails)
+router.get("/accountDetails",verifyUserJWT,getUserAccountDetails)
 router.get("/allDeliveryAddress",verifyUserJWT,getDeliveryAddress)
 router.post("/addDeliveryAddress",verifyUserJWT,addDeliveryAddress)
 router.patch("/updateAccountDetails",verifyUserJWT,updateAccountDetails)

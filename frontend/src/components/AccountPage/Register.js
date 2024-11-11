@@ -3,10 +3,14 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { RegisterUser } from "@/app/apiCalls";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 function Register() {
-  const [isHidePassword,setIsHidePassword] = useState(true)
+  const [isHidePassword,setIsHidePassword] = useState(true);
   const [emptyFields, setEmptyFields] = useState(false);
+  const [registerationSuccess , setRegisterationSuccess] = useState(false);
   const [registerUserData, setRegisterUserData] = useState({
     fullName: "",
     username: "",
@@ -14,6 +18,8 @@ function Register() {
     phoneNumber: "",
     email: "",
   });
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -32,23 +38,25 @@ function Register() {
       registerUserData.phoneNumber,
       registerUserData.username
     ].some( item => item.trim() === "")) setEmptyFields(true) 
-    else setEmptyFields(false)
-
-    console.log("Register form data:", registerUserData);
+    else{
+      setEmptyFields(false)
+      setRegisterationSuccess(RegisterUser(registerUserData,dispatch,router))
+    }
   };
+
   return (
     <div className="mx-16 my-6">
       <div className="mt-8">
       {emptyFields && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
-                All fields are required
+              {emptyFields ? "All fields are required" : (!registerationSuccess && "Something Error !!! Registration Failed")}
               </p>
             )}
         <form onSubmit={() => handleRegister()}>
           <input
             placeholder="Full Name"
             className={`border mt-4 ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  (emptyFields || !registerationSuccess) ? "border-red-500" : "border-black"
                 } py-1 px-2 rounded w-full`}
             name="fullName"
             value={registerUserData.fullName}
@@ -57,7 +65,7 @@ function Register() {
           <input
             placeholder="Username"
             className={`border mt-4 ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  (emptyFields || !registerationSuccess) ? "border-red-500" : "border-black"
                 } py-1 px-2 rounded w-full`}
             name="username"
             value={registerUserData.username}

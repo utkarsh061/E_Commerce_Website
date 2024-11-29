@@ -14,7 +14,7 @@ function ShoppingRow(props){
                 <h2 className="font-extrabold text-4xl text-center">{heading}</h2>
                 <div class="bg-red-600 border-solid text-red-600 h-2 text-xs rounded">*</div>
             </div>
-            <div className="flex flex-wrap my-8">
+            <div className="md:flex md:flex-wrap my-8">
                 {data?.map((item) => (
                     <IndividualItem
                         key={item.id}

@@ -5,7 +5,7 @@ import Products from "@/components/ProductPage/Products";
 
 function ProductsPage(){
     return(
-        <div className="mx-52 my-12">
+        <div className="mx-auto my-0 max-w-6xl px-8">
             <Header/>
             <Products/>
         </div>

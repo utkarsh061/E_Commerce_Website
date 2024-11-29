@@ -3,7 +3,7 @@
 function FirstDesign(props){
     const {title,description,imageUrl,style}=props
     return(
-        <div className="text-black px-52">
+        <div className="text-black">
         <div className="hover:-translate-y-7 duration-1000 shadow-2xl flex items-center">
             <div className="pl-4 py-8">
                     <img src={imageUrl} className={style} ></img>

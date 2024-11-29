@@ -13,11 +13,11 @@ function SingleProduct(){
     const { individualPageItem} = applicationData
     const dispatch = useDispatch()
     return(
-        <>
+        <div className="mx-auto my-0 max-w-6xl px-8">
             <SingleProductInfo
                 individualPageItem={individualPageItem}
             />
-            <div className="mx-52 my-12">
+            <div>
                 <div className="flex">
                     <div className="basis-1/2 font-bold text-2xl"><h1>More Products</h1></div>
                     <div className="basis-1/2 flex justify-end">
@@ -27,7 +27,7 @@ function SingleProduct(){
                     </div>
                 </div>
                 <div>
-                    <div className="flex flex-wrap my-8">
+                    <div className="md:flex md:flex-wrap my-8">
                     {newArrival?.map((item) => (
                         <IndividualItem
                             key={item.id}
@@ -42,7 +42,7 @@ function SingleProduct(){
                 </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

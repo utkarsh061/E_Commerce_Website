@@ -25,7 +25,8 @@ function AccountPage() {
       {isUserLoggedIn ? (
         <AccountDetails />
       ) : (
-        <div className="my-12 bg-gradient-to-l from-black to-gray-700 flex flex-wrap">
+        <div className="my-12 bg-gradient-to-l from-black to-gray-700">
+          <div className="flex flex-wrap mx-auto my-0 max-w-6xl px-8">
           <div className="basis-1/2 my-12 flex justify-center">
             <div className="bg-white w-1/2 rounded">
               <div className="flex">
@@ -51,6 +52,7 @@ function AccountPage() {
           </div>
           <div className="w-1/2 h-1/2 basis-1/2">
             <img src="/Images/laptop1.jpg" className="px-20 py-12" />
+          </div>
           </div>
         </div>
       )}

@@ -13,7 +13,7 @@ function Products(){
 
     return (
         <div className="my-4">
-            <div className="flex flex-wrap">
+            <div className="sm:flex sm:flex-wrap">
                 {products?.map((item) => (
                         <IndividualItem
                             key={item.id}

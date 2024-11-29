@@ -53,11 +53,11 @@ function SingleProductInfo(props) {
   };
 
   return individualPageItem?.id ? (
-    <div className="flex flex-wrap mx-64 my-12">
+    <div className="flex flex-wrap mx-20 my-12">
       <div>
-        <img src={individualPageItem.imgURL} className="h-96 w-96"></img>
+        <img src={individualPageItem.imgURL} className="w-full h-96 md:h-96 md:w-96"></img>
       </div>
-      <div className="mt-2 ml-6">
+      <div className="ml-12">
         <h1 className="font-black text-4xl flex flex-wrap">
           {individualPageItem.title}
         </h1>

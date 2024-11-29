@@ -3,7 +3,8 @@ import Link from "next/link";
 
 function Footer() {
   return (
-      <div className="flex flex-wrap px-20 py-16 bg-black text-white absolute mt-8">
+      <div className="mx-auto my-0 px-8 w-full bg-black py-16 text-white absolute mt-8">
+        <div className="md:flex md:flex-wrap mx-auto my-0 max-w-6xl px-8">
         <div className="basis-2/6">
           <h3 className="font-bold">Download Our App</h3>
           <p className="text-sm text-gray-600 mt-4">
@@ -19,8 +20,8 @@ function Footer() {
           </div>
         </div>
         <div className="basis-2/6 text-gray-500 flex flex-col justify-center items-center">
-          <div className="border-4 border-double border-gray-600 w-1/3">
-            <h2 className="py-1 font-bold font-sans text-center text-xl">
+          <div className="border-4 border-double border-gray-600">
+            <h2 className="py-1 px-2 font-bold font-sans text-center text-xl">
               Ur's Store
             </h2>
           </div>
@@ -62,6 +63,7 @@ function Footer() {
               <Link href={"#"}>Youtube</Link>
             </li>
           </ul>
+        </div>
         </div>
       </div>
   );

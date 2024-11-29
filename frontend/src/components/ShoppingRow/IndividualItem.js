@@ -13,9 +13,10 @@ function IndividualItem(props){
             onClick={handleClick}
             >
                 <div className="my-4">
-                <img src={imgURL} className="h-56 w-96 px-4"></img>
+                <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96 px-16 md:px-4"></img>
                 </div>
-                <div className="w-64 font-semibold text-gray-600 text-left pl-4 mb-1 text-sm">
+                <div className='flex flex-col items-center md:items-start'>
+                <div className="font-semibold text-gray-600 text-left pl-4 mb-1 text-2xl md:text-sm">
                     <p>{title}</p>
                 </div>
                 <div className='text-gray-600 text-left pl-4 mb-1'>
@@ -28,6 +29,7 @@ function IndividualItem(props){
                     </span>
                 </div>
                 <div className="text-gray-600 text-left pl-4 mb-2 text-sm">{NumberToString(price)}</div>
+                </div>
             </div>
         </Link>
         </>

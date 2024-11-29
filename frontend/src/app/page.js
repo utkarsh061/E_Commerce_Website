@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <main>
       <FeatureSection/>
+      <div className="mx-auto my-0 max-w-6xl px-8">
       <HighlightedSection/>
-    <div className="mx-52 my-12">
         <ShoppingRow
           heading="Special Edition"
           isSpecialEdition={true}

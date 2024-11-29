@@ -2,7 +2,7 @@
 
 function SecondDesign(){
 return(
-    <div className="text-black px-52">
+    <div className="text-black">
         <div className="hover:-translate-y-7 duration-1000 flex items-center justify-end mr-8">
             <div className="-ml-4">
                 <h2 className="font-black text-2xl text-right">Headphones & Speakers</h2>

@@ -23,14 +23,14 @@ export const specialEdition =[
         review:"135",
         price:"Rs 47,999.00"
     },
-    {
-        id:4,
-        imgURL:"/Images/jbl1.jpg",
-        title: "JBL Headphones",
-        rating:"3.9",
-        review:"49",
-        price:"Rs 5,999.00"
-    },
+    // {
+    //     id:4,
+    //     imgURL:"/Images/jbl1.jpg",
+    //     title: "JBL Headphones",
+    //     rating:"3.9",
+    //     review:"49",
+    //     price:"Rs 5,999.00"
+    // },
 ]
 
 export const newArrival =[
@@ -58,12 +58,12 @@ export const newArrival =[
         review:"137",
         price:"Rs 999.00"
     },
-    {
-        id:4,
-        imgURL:"/Images/bluetooth.jpg",
-        title: "JBL Bluetooth Speakers",
-        rating:"3.7",
-        review:"15",
-        price:"Rs 10,999.00"
-    },
+    // {
+    //     id:4,
+    //     imgURL:"/Images/bluetooth.jpg",
+    //     title: "JBL Bluetooth Speakers",
+    //     rating:"3.7",
+    //     review:"15",
+    //     price:"Rs 10,999.00"
+    // },
 ]

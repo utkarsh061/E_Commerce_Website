@@ -22,7 +22,7 @@ function AccountPage() {
   };
   return (
     <>
-      {isUserLoggedIn ? (
+      {true ? (
         <AccountDetails />
       ) : (
         <div className="bg-gradient-to-l from-black to-gray-700">

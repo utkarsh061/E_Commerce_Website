@@ -33,7 +33,7 @@ function AccountDetails(){
     }
 
     return (
-        <div className="mx-64 my-16 flex">
+        <div className="mx-auto my-12 max-w-6xl px-8 sm:flex text-black">
             <div className="basis-1/2">
             <h1 className="font-bold flex justify-center text-2xl font-serif my-4">
                 Account Details
@@ -66,20 +66,20 @@ function AccountDetails(){
                     <input
                     type="submit"
                     value="Log Out"
-                    className="hover:cursor-pointer text-white bg-gray-700 hover:bg-black px-6 py-2 rounded-3xl flex justify-center"
+                    className="w-1/2 sm:w-7/12 hover:cursor-pointer text-white bg-gray-700 hover:bg-black px-6 py-2 rounded-3xl flex justify-center"
                     onClick={handleLogOut}
                     />
-                    <div className="flex">
+                    <div className="flex justify-end w-full">
                     <input
                     type="submit"
                     value="Cancel"
-                    className= {`hover:cursor-pointer border border-black rounded-3xl hover:bg-gray-300 mr-4 px-6 py-2 ${inputDisabled && "hidden"}`}
+                    className= {`w-1/2 sm:w-7/12 hover:cursor-pointer border border-black rounded-3xl hover:bg-gray-300 mr-4 px-6 py-2 ${inputDisabled && "hidden"}`}
                     onClick={handleCancelClick}
                     />
                     <input
                     type="submit"
                     value={inputDisabled ? "Edit" : "Save Changes"}
-                    className="hover:cursor-pointer text-white bg-gray-700 hover:bg-black px-6 py-2 rounded-3xl flex justify-center"
+                    className="w-1/2 sm:w-7/12 hover:cursor-pointer text-white bg-gray-700 hover:bg-black px-6 py-2 rounded-3xl flex justify-center"
                     onClick={handleEditClick}
                     />
                     </div>

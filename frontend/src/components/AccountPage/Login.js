@@ -52,7 +52,7 @@ function Login() {
     });
   };
   return (
-    <div className="mx-16 my-6">
+    <div className="mx-4 my-6">
       <div className="mt-12">
         {isForgetPassword ? (
           <ForgotPassword

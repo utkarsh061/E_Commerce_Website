@@ -35,11 +35,11 @@ function ContactUs() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="mx-auto h-fit max-w-6xl px-8 flex flex-col">
       <h1 className="font-bold flex justify-center text-4xl font-serif tracking-wider">
         Contact Us
       </h1>
-      <p className="flex justify-center">
+      <p className="flex justify-center text-center text-black text-sm sm:text-base">
         Please Fill out this Form as per your request
       </p>
       {emptyFields && (
@@ -56,7 +56,7 @@ function ContactUs() {
           placeholder=" Full Name"
           className={`${
             emptyFields ? "border-red-500" : "border-black"
-          } border rounded w-1/3`}
+          } border rounded w-full sm:w-1/2`}
           onChange={handleInputChange}
         />
       </div>
@@ -70,7 +70,7 @@ function ContactUs() {
           value={formDetails.email}
           className={`${
             emptyFields ? "border-red-500" : "border-black"
-          } border rounded w-1/3`}
+          } border rounded w-full sm:w-1/2`}
           onChange={handleInputChange}
         />
       </div>
@@ -84,7 +84,7 @@ function ContactUs() {
           name="phoneNumber"
           className={`${
             emptyFields ? "border-red-500" : "border-black"
-          } border rounded w-1/3`}
+          } border rounded w-full sm:w-1/2`}
           onChange={handleInputChange}
         ></input>
       </div>
@@ -98,7 +98,7 @@ function ContactUs() {
           placeholder=" Message"
           className={`${
             emptyFields ? "border-red-500" : "border-black"
-          } border rounded w-1/3`}
+          } border rounded w-full sm:w-1/2`}
           onChange={handleInputChange}
         ></textarea>
       </div>
@@ -106,7 +106,7 @@ function ContactUs() {
         <input
           type="submit"
           value="Submit"
-          className="px-8 py-2 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer"
+          className="px-8 py-2 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer w-full sm:w-fit"
           onClick={handleSubmit}
         />
       </div>

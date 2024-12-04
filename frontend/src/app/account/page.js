@@ -25,7 +25,7 @@ function AccountPage() {
       {isUserLoggedIn ? (
         <AccountDetails />
       ) : (
-        <div className="my-12 bg-gradient-to-l from-black to-gray-700">
+        <div className="bg-gradient-to-l from-black to-gray-700">
           <div className="flex flex-wrap mx-auto my-0 max-w-6xl px-8">
           <div className="basis-1/2 my-12 flex justify-center">
             <div className="bg-white w-1/2 rounded">

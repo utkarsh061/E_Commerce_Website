@@ -13,7 +13,7 @@ function Products(){
 
     return (
         <div className="my-4">
-            <div className="sm:flex sm:flex-wrap">
+            <div className="md:flex md:flex-wrap">
                 {products?.map((item) => (
                         <IndividualItem
                             key={item.id}
@@ -26,7 +26,7 @@ function Products(){
                         />
                     ))}
             </div>
-            <div className="flex justify-center mt-12">
+            <div className="flex justify-center my-8">
                 <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">1</div></Link>
                 <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">2</div></Link>
                 <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">3</div></Link>

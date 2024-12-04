@@ -45,7 +45,7 @@ function Register() {
   };
 
   return (
-    <div className="mx-16 my-6">
+    <div className="mx-4 my-6">
       <div className="mt-8">
       {emptyFields && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">

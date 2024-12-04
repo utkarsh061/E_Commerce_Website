@@ -9,7 +9,7 @@ import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
 
 export default function Home() {
   return (
-    <main>
+    <main className="">
       <FeatureSection/>
       <div className="mx-auto my-0 max-w-6xl px-8">
       <HighlightedSection/>

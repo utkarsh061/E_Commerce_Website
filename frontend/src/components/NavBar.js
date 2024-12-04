@@ -8,12 +8,12 @@ function NavBar(){
     const { cartItems } = useSelector((state) => state.application)
     return (
        <div className="w-full my-4 flex">
-         <div className="bg-black border-4 border-double border-white min-w-44 min-h-12">
-            <h1 className="text-white px-2 py-1 font-bold font-sans text-center text-3xl">Ur's Store</h1>
+         <div className="bg-black border-4 border-double border-white min-w-44 max-h-12">
+            <h1 className="text-white px-2 font-bold font-sans text-center text-3xl">Ur's Store</h1>
          </div>
          <div className="w-4/5 text-white">
             <nav className="bg-gradient-to-r from-gray-400 to-black">
-                <ul className="flex flex-wrap justify-end max-h-7 my-2.5">
+                <ul className="text-right md:flex md:justify-end md:max-h-7 my-2.5">
                     <li className="px-4 py-1">
                         <Link className="mb-2" href={'/'}>Home</Link>
                     </li>

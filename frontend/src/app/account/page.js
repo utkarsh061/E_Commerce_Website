@@ -26,9 +26,9 @@ function AccountPage() {
         <AccountDetails />
       ) : (
         <div className="bg-gradient-to-l from-black to-gray-700">
-          <div className="flex flex-wrap mx-auto my-0 max-w-6xl px-8">
-          <div className="basis-1/2 my-12 flex justify-center">
-            <div className="bg-white w-1/2 rounded">
+          <div className="sm:flex mx-auto my-0 max-w-6xl px-8">
+          <div className="sm:basis-1/2 py-12 flex justify-center">
+            <div className="bg-white w-8/12 sm:w-4/6 rounded">
               <div className="flex">
                 <h3
                   className={`basis-1/2 flex justify-center hover:cursor-pointer ${
@@ -50,8 +50,8 @@ function AccountPage() {
               {isRegisterPage ? <Register /> : <Login/>}
             </div>
           </div>
-          <div className="w-1/2 h-1/2 basis-1/2">
-            <img src="/Images/laptop1.jpg" className="px-20 py-12" />
+          <div className="w-1/2 h-1/2 sm:basis-1/2 hidden sm:block my-12 lg:my-0">
+            <img src="/Images/laptop1.jpg" className="py-12 h-full  " />
           </div>
           </div>
         </div>

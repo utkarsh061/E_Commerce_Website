@@ -19,7 +19,7 @@ function SingleProduct(){
             />
             <div>
                 <div className="flex">
-                    <div className="basis-1/2 font-bold text-2xl"><h1>More Products</h1></div>
+                    <div className="basis-1/2 font-bold text-lg sm:text-2xl"><h1>More Products</h1></div>
                     <div className="basis-1/2 flex justify-end">
                         <Link href={"/products"}>
                             View More
@@ -27,7 +27,7 @@ function SingleProduct(){
                     </div>
                 </div>
                 <div>
-                    <div className="md:flex md:flex-wrap my-8">
+                    <div className="md:flex md:flex-wrap">
                     {newArrival?.map((item) => (
                         <IndividualItem
                             key={item.id}

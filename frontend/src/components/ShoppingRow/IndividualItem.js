@@ -8,18 +8,18 @@ function IndividualItem(props){
     const {imgURL,title,rating,review,price,handleClick} = props
     return (
         <>
-        <Link href={"/singleproduct"} className="px-2 shadow-xl flex-auto basis-1/4 hover:shadow-2xl">
+        <Link href={"/singleproduct"} className="pt-4 px-2 shadow-xl flex-auto basis-1/4 hover:shadow-2xl">
             <div 
             onClick={handleClick}
             >
-                <div className="my-4">
+                <div className="mb-2">
                 <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96 px-16 md:px-4"></img>
                 </div>
                 <div className='flex flex-col items-center md:items-start'>
-                <div className="font-semibold text-gray-600 text-left pl-4 mb-1 text-2xl md:text-sm">
+                <div className="font-semibold text-gray-600 text-left pl-4 mb-1 text-base">
                     <p>{title}</p>
                 </div>
-                <div className='text-gray-600 text-left pl-4 mb-1'>
+                <div className='text-gray-600 text-left pl-4 mb-1 text-sm'>
                     <span>
                         {rating}
                     </span>

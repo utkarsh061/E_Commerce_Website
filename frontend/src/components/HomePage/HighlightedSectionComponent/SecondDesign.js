@@ -9,7 +9,7 @@ return(
                 <p className="max-w-80 pl-8">Experience uncompromising sound wherever you are through wired and wireless technology.</p>
             </div>
             <div className="py-8">
-                    <img src="/Images/headphone.jpg" className="h-80 w-max" ></img>
+                    <img src="/Images/headphone.jpg" className="h-64 sm:h-80 w-max" ></img>
             </div>
             </div>
         </div>

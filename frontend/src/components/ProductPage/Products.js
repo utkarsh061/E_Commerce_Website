@@ -12,7 +12,7 @@ function Products(){
     }
 
     return (
-        <div className="my-4">
+        <div className="md:my-4">
             <div className="md:flex md:flex-wrap">
                 {products?.map((item) => (
                         <IndividualItem

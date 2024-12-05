@@ -2,34 +2,66 @@
 
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useRef, useState } from "react";
 
 function NavBar(){
 
     const { cartItems } = useSelector((state) => state.application)
+    const [isMenuVisible, setIsMenuVisible] = useState(false)
+    const dropdownRef = useRef(null)
+
+    const toggleMenu = () => { 
+        setIsMenuVisible(!isMenuVisible);
+    }
+
+    const NavMenuClicked = () => {
+        setIsMenuVisible(false)
+    }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+          if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsMenuVisible(false);
+          }
+        };
+    
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, []);
+
     return (
-       <div className="w-full my-4 flex">
+       <div className="w-full my-4 flex relative">
          <div className="bg-black border-4 border-double border-white min-w-44 max-h-12">
             <h1 className="text-white px-2 font-bold font-sans text-center text-3xl">Ur's Store</h1>
          </div>
          <div className="w-4/5 text-white">
-            <nav className="bg-gradient-to-r from-gray-400 to-black">
-                <ul className="text-right md:flex md:justify-end md:max-h-7 my-2.5">
-                    <li className="px-4 py-1">
-                        <Link className="mb-2" href={'/'}>Home</Link>
+            <nav className="my-2.5 bg-gradient-to-r from-gray-400 to-black text-right px-2 relative">
+                <button onClick={toggleMenu} className="md:hidden">
+                    <FontAwesomeIcon icon={faBars} style={{ color: "#f5f5f5" }} />
+                </button>
+                <div className="flex justify-end md:max-h-7" ref={dropdownRef}>
+                <ul className={`absolute md:relative md:px-0 text-right text-xs md:text-base md:flex md:justify-end md:py-1 ${isMenuVisible ? "block" : "hidden"}`}>
+                    <li className="md:px-4 py-2.5 px-2 md:py-0 bg-black md:bg-opacity-0 hover:bg-gray-700 md:hover:bg-opacity-0">
+                        <Link href={'/'} onClick={NavMenuClicked}>Home</Link>
                     </li>
-                    <li className="px-4 py-1">
-                        <Link href={"/products"}>Products</Link>
+                    <li className="md:px-2 py-2.5 px-2 md:py-0 bg-black md:bg-opacity-0 hover:bg-gray-700 md:hover:bg-opacity-0">
+                        <Link href={"/products"} onClick={NavMenuClicked}>Products</Link>
                     </li>
-                    <li className="px-4 py-1">
-                         <Link href={'/about'}>About</Link>
+                    <li className="md:px-4 py-2.5 px-2 md:py-0 bg-black md:bg-opacity-0 hover:bg-gray-700 md:hover:bg-opacity-0">
+                         <Link href={'/about'} onClick={NavMenuClicked}>About</Link>
                     </li>
-                    <li className="px-4 py-1">
-                        <Link href={'/contact'}>Contact Us</Link>
+                    <li className="md:px-4 py-2.5 px-2 md:py-0 bg-black md:bg-opacity-0 hover:bg-gray-700 md:hover:bg-opacity-0">
+                        <Link href={'/contact'} onClick={NavMenuClicked}>Contact Us</Link>
                     </li>
-                    <li className="px-4 py-1">
-                        <Link href={'/account'}>Account</Link>
+                    <li className="md:px-4 py-2.5 px-2 md:py-0 bg-black md:bg-opacity-0 md:hover:bg-opacity-0 hover:bg-gray-700">
+                        <Link href={'/account'} onClick={NavMenuClicked}>Account</Link>
                     </li>
                 </ul>
+                </div>
 	        </nav>
          </div>
          <div>

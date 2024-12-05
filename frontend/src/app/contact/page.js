@@ -30,8 +30,6 @@ function ContactUs() {
     )
       setEmptyFields(true);
     else setEmptyFields(false);
-
-    console.log(formDetails);
   };
 
   return (

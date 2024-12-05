@@ -53,15 +53,15 @@ function SingleProductInfo(props) {
   };
 
   return individualPageItem?.id ? (
-    <div className="flex flex-wrap mx-20 my-12">
+    <div className="sm:flex mb-8">
       <div>
         <img src={individualPageItem.imgURL} className="w-full h-96 md:h-96 md:w-96"></img>
       </div>
-      <div className="ml-12">
-        <h1 className="font-black text-4xl flex flex-wrap">
+      <div className="sm:ml-8 mt-4">
+        <h1 className="font-black text-2xl lg:text-4xl">
           {individualPageItem.title}
         </h1>
-        <h1 className="mt-4 font-bold text-gray-700 text-xl">
+        <h1 className="mt-4 font-bold text-gray-700 text-base sm:text-xl">
           {NumberToString(individualPageItem.price)}
         </h1>
         {individualPageItem.category && (
@@ -78,11 +78,11 @@ function SingleProductInfo(props) {
           </select>
         )}
         {!isCategorySelected && <p className="text-red-600 font-medium text-xs ml-2">Select category</p>}
-        <h1 className="mt-4 font-extrabold tracking-wide text-xl">
+        <h1 className="mt-4 font-extrabold tracking-wide text-base sm:text-xl">
           Product Details
           <FontAwesomeIcon icon={faIndent} className="ml-2 text-orange-600" />
         </h1>
-        <p className="flex flex-wrap w-72 text-left mt-4">
+        <p className="flex flex-wrap w-72 text-left mt-4 text-sm sm:text-base">
           {individualPageItem?.description}
         </p>
         <div
@@ -101,7 +101,6 @@ function SingleProductInfo(props) {
           <span className="text-green-500 px-1 italic mt-1">Added To Card</span>
           </>
           }
-        <div className="pt-6"></div>
       </div>
     </div>
   ) : (

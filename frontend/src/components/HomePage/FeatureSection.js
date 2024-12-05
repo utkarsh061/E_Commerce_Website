@@ -13,7 +13,7 @@ function FeatureSection(){
                     />
                 </div>
                 <div className="basis-1/2">
-                        <img src="/Images/titan.jpg" className="my-8 sm:h-60 h-full w-11/12 px-4 opacity-75"></img>
+                        <img src="/Images/titan.jpg" className="my-8 sm:h-60 w-11/12 px-4 opacity-75"></img>
                 </div>
             </div>
         </div>

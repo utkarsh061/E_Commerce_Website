@@ -13,7 +13,7 @@ function IndividualItem(props){
             onClick={handleClick}
             >
                 <div className="mb-2">
-                <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96 px-16 md:px-4"></img>
+                <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96"></img>
                 </div>
                 <div className='flex flex-col items-center md:items-start'>
                 <div className="font-semibold text-gray-600 text-left pl-4 mb-1 text-base">

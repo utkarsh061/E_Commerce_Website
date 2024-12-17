@@ -7,7 +7,7 @@ export const applicationSlice = createSlice({
         cartItems:[],
         isUserLoggedIn:false,
         accoutDetails:{},
-        allOrders:{}
+        allOrders:[]
     },
     reducers:{
         setIndividualPageItem: (state,{payload}) => {

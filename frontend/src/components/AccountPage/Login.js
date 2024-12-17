@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 function Login() {
   const [emptyFields, setEmptyFields] = useState(false);
-  const [isValidCredentials , setIsValidCredentials] = useState(false);
+  const [isValidCredentials , setIsValidCredentials] = useState(true);
   const dispatch = useDispatch();
   const router = useRouter();
   useRouter
@@ -27,12 +27,13 @@ function Login() {
   const handleForgoetPassword = () => {
     setIsForgetPassword(true);
   };
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     event.preventDefault();
     if([loginFormData.email,loginFormData.password].some(item => item.trim() === "")) setEmptyFields(true)
       else {
         setEmptyFields(false)
-        setIsValidCredentials(LoginUser(loginFormData,dispatch,router)) 
+        let loginUserBool = await LoginUser(loginFormData,dispatch,router)
+        setIsValidCredentials(loginUserBool)
       }
   };
 
@@ -61,9 +62,9 @@ function Login() {
           />
         ) : (
           <>
-            {(emptyFields || isValidCredentials) && (
+            {(emptyFields || !isValidCredentials) && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
-                {emptyFields ? "All fields are required" : (isValidCredentials && "Invalid Credentials")}
+              {emptyFields ? "All fields are required" : (!isValidCredentials && "Invalid Credentials")}
               </p>
             )}
             <form onSubmit={() => handleFormSubmit()}>
@@ -71,7 +72,7 @@ function Login() {
                 placeholder="Email Id"
                 type="email"
                 className={`border ${
-                  (emptyFields || isValidCredentials) ? "border-red-500" : "border-black"
+                  (emptyFields || !isValidCredentials) ? "border-red-500" : "border-black"
                 } py-1 px-2 rounded w-full`}
                 id="loginEmail"
                 name="email"
@@ -87,7 +88,7 @@ function Login() {
                   value={loginFormData.password}
                   onChange={handleInputChange}
                   className={`border ${
-                    (emptyFields || isValidCredentials) ? "border-red-500" : "border-black"
+                    (emptyFields || !isValidCredentials) ? "border-red-500" : "border-black"
                   } py-1 px-2 mt-4 rounded w-full`}
                 />
                 <button

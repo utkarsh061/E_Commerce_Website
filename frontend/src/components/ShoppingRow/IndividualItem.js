@@ -16,19 +16,19 @@ function IndividualItem(props){
                 <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96"></img>
                 </div>
                 <div className='flex flex-col items-center md:items-start'>
-                <div className="font-semibold text-gray-600 text-left pl-4 mb-1 text-base">
-                    <p>{title}</p>
-                </div>
-                <div className='text-gray-600 text-left pl-4 mb-1 text-sm'>
-                    <span>
-                        {rating}
-                    </span>
-                    <FontAwesomeIcon icon={faStar} className='text-red-600 px-1' />
-                    <span>
-                    | ({review})
-                    </span>
-                </div>
-                <div className="text-gray-600 text-left pl-4 mb-2 text-sm">{NumberToString(price)}</div>
+                    <div className="font-semibold text-gray-600 text-left pl-2 mb-1 text-base">
+                        <p>{title}</p>
+                    </div>
+                    <div className='text-gray-600 text-left pl-2 mb-1 text-sm'>
+                        <span>
+                            {rating}
+                        </span>
+                        <FontAwesomeIcon icon={faStar} className='text-red-600 px-1' />
+                        <span>
+                        | ({review})
+                        </span>
+                    </div>
+                    <div className="text-gray-600 text-left pl-2 mb-2 text-sm">{NumberToString(price)}</div>
                 </div>
             </div>
         </Link>

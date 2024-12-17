@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 function Register() {
   const [isHidePassword,setIsHidePassword] = useState(true);
   const [emptyFields, setEmptyFields] = useState(false);
-  const [registerationSuccess , setRegisterationSuccess] = useState(false);
+  const [registerationSuccess , setRegisterationSuccess] = useState(true);
   const [registerUserData, setRegisterUserData] = useState({
     fullName: "",
     username: "",
@@ -29,7 +29,7 @@ function Register() {
     });
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     event.preventDefault();
 
     if([registerUserData.email,
@@ -40,14 +40,15 @@ function Register() {
     ].some( item => item.trim() === "")) setEmptyFields(true) 
     else{
       setEmptyFields(false)
-      setRegisterationSuccess(RegisterUser(registerUserData,dispatch,router))
+      let isRegisterSuccessfull = await RegisterUser(registerUserData,router)
+      setRegisterationSuccess(isRegisterSuccessfull)
     }
   };
 
   return (
     <div className="mx-4 my-6">
       <div className="mt-8">
-      {emptyFields && (
+      {(emptyFields || !registerationSuccess) && (
               <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
               {emptyFields ? "All fields are required" : (!registerationSuccess && "Something Error !!! Registration Failed")}
               </p>

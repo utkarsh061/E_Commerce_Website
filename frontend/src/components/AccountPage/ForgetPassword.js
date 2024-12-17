@@ -3,22 +3,30 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { resetPassword } from "@/app/apiCalls";
+import { useRouter } from "next/navigation";
 
 function ForgotPassword(props){
     const {handlePasswordHide,isHidePassword} = props
     const [emptyFields, setEmptyFields] = useState(false);
+    const [isResetPasswordSuccessfull,setIsResetPasswordSuccessfull] = useState(true)
+    const router = useRouter();
     const [forgotPasswordData, setForgotPasswordData] = useState({
         email: "",
         newPassword: "",
         confirmNewPassword: "",
       });
     
-    const handleFormSubmit = () => {
+    const handleFormSubmit = async () => {
         event.preventDefault();
          if([forgotPasswordData.email,
             forgotPasswordData.newPassword,
             forgotPasswordData.confirmNewPassword].some( item =>  item.trim() === "")) setEmptyFields(true)
-            else setEmptyFields(false)
+            else {
+              setEmptyFields(false)
+              let isResetPasswordChanged = await resetPassword(forgotPasswordData,router)
+              setIsResetPasswordSuccessfull(isResetPasswordChanged)
+            }
       };
 
       const handleInputChange = (event) => {
@@ -31,9 +39,9 @@ function ForgotPassword(props){
       };
     return (
         <>
-          {emptyFields && (
-              <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
-                All fields are required
+          {(emptyFields || !isResetPasswordSuccessfull) && (
+              <p className="text-red-600 font-medium text-xs mb-2 w-full flex justify-center">
+                {emptyFields ? "All fields are required" : "Password should match"}
               </p>
             )}
           <form onSubmit={() => handleFormSubmit()}>
@@ -42,7 +50,7 @@ function ForgotPassword(props){
                 placeholder="Email"
                 type="email"
                 className={`border py-1 px-2 rounded w-full ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  emptyFields || !isResetPasswordSuccessfull ? "border-red-500" : "border-black"
                 }`}
                 id="forgotPasswordEmail"
                 name="email"
@@ -58,7 +66,7 @@ function ForgotPassword(props){
                       : "text"
                   }
                   className={`border py-1 px-2 mt-4 rounded w-full  ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  emptyFields || !isResetPasswordSuccessfull ? "border-red-500" : "border-black"
                 }`}
                   name="newPassword"
                   value={forgotPasswordData.newPassword}
@@ -93,7 +101,7 @@ function ForgotPassword(props){
                   value={forgotPasswordData.confirmNewPassword}
                   onChange={handleInputChange}
                   className={`border py-1 px-2 mt-4 rounded w-full ${
-                  emptyFields ? "border-red-500" : "border-black"
+                  emptyFields || !isResetPasswordSuccessfull ? "border-red-500" : "border-black"
                 } `}
                 ></input>
                 <button

@@ -1,7 +1,24 @@
 
-import { loginUrl,registerUserUrl,getUserAccountDetails,getOrderHistory,forgotPassword } from "./apiEndPoints"
-import { getService, postService } from "./globalUtils"
-import { setAccoutDetails, setIsUserLoggedIn,setAllOrders } from "./redux/applicationSlice"
+import { 
+    loginUrl,
+    registerUserUrl,
+    getUserAccountDetails,
+    getOrderHistory,
+    forgotPassword,
+    getAllDeliveryAddress,
+    addDeliveryAddress,
+    placeOrder
+} from "./apiEndPoints"
+import { 
+    getService, 
+    postService 
+} from "./globalUtils"
+import { 
+    setAccoutDetails,
+    setIsUserLoggedIn,
+    setAllOrders,
+    setAddressDetails
+} from "./redux/applicationSlice"
 
 export const LoginUser = async (payload,dispatch,router) => {
     let validCredentials = false;
@@ -30,7 +47,6 @@ export const RegisterUser = async (payload,router) => {
             router.push("/")
         }
     }
-    console.log(registeredSuccessfully)
     return registeredSuccessfully;
 }
 export const getAccountDetails = async (dispatch) => {
@@ -67,4 +83,38 @@ export const resetPassword = async (payload,router) => {
         }
     }
     return resetPassWordSuccessfull;
+}
+
+export const getDeliveryAddress = async (dispatch) => {
+    let accessToken = localStorage.getItem("accessToken")
+    const resp = await getService(getAllDeliveryAddress,{
+        "Authorization": `Bearer ${accessToken}`,
+    })
+    if(resp?.data?.data){
+        dispatch(setAddressDetails(resp?.data?.data))
+    }
+}
+export const addDeliveryAddresApiCall = async (payload,dispatch) => {
+    let addressAddedSuccessfully = false;
+    let accessToken = localStorage.getItem("accessToken")
+    const resp = await postService(addDeliveryAddress,payload,{
+        "Authorization": `Bearer ${accessToken}`,
+    })
+    if(resp?.data?.success){
+        addressAddedSuccessfully = true;
+    }
+    return addressAddedSuccessfully;
+    
+}
+export const placeOrderApiCall = async (payload) => {
+    let orderPlacedSuccessfully = false;
+    let accessToken = localStorage.getItem("accessToken")
+    const resp = await postService(placeOrder,payload,{
+        "Authorization": `Bearer ${accessToken}`,
+    })
+    if(resp?.data?.success){
+        orderPlacedSuccessfully = true;
+    }
+    return orderPlacedSuccessfully;
+    
 }

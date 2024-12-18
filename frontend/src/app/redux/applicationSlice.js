@@ -7,11 +7,15 @@ export const applicationSlice = createSlice({
         cartItems:[],
         isUserLoggedIn:false,
         accoutDetails:{},
-        allOrders:[]
+        allOrders:[],
+        addressDetails: []
     },
     reducers:{
         setIndividualPageItem: (state,{payload}) => {
             state.individualPageItem = payload;
+        },
+        setAddressDetails: (state,{payload}) => {
+            state.addressDetails = payload;
         },
         setCartItems: (state,{payload}) => {
             state.cartItems = payload;
@@ -33,7 +37,8 @@ export const {
     setCartItems,
     setIsUserLoggedIn,
     setAccoutDetails,
-    setAllOrders
+    setAllOrders,
+    setAddressDetails
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

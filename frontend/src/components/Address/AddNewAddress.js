@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Button from "../Buton";
+import { addDeliveryAddresApiCall } from "@/app/apiCalls";
+import { useDispatch } from "react-redux";
 
 function AddNewAddress(props) {
   const {
-    handleNewAddressClick,
-    setIsAllNewAddressFieldsSelected,
-    isAllNewAddressFieldsSelected,
+    handleNewAddressClick
   } = props;
+  const dispatch = useDispatch();
   const [isFieldEmpty, setisFieldEmpty] = useState(false);
   const [addressDetailsObj, setaddressDetailsObj] = useState({
     addressLine1: "",
@@ -20,7 +21,7 @@ function AddNewAddress(props) {
     pinCode: "",
   });
 
-  const handleClick = () => {
+  const handleSaveAddressClick = async () => {
     if (
       [
         addressDetailsObj.addressLine1,
@@ -33,8 +34,11 @@ function AddNewAddress(props) {
     ) {
       setisFieldEmpty(true);
     } else {
-      handleNewAddressClick();
-      setisFieldEmpty(false);
+      let isNewAddressAdded = await addDeliveryAddresApiCall(addressDetailsObj,dispatch)
+      if(isNewAddressAdded){
+        handleNewAddressClick();
+        setisFieldEmpty(false);
+      }
     }
     console.log(addressDetailsObj);
   };
@@ -46,7 +50,7 @@ function AddNewAddress(props) {
     });
   };
   return (
-    <div className="flex flex-col mx-72 my-12">
+    <div className="flex flex-col mx-auto my-8 max-w-6xl px-8 ">
       {isFieldEmpty && (
         <div className="mt-2 flex justify-around">
           <label className="text-red-600 font-medium text-xs ">
@@ -131,7 +135,7 @@ function AddNewAddress(props) {
           className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
         ></input>
       </div>
-      <div className="flex flex-row justify-end mr-16 mt-8">
+      <div className="flex flex-row justify-end mr-16 sm:mr-32 mt-8 w-full">
         <input
           type="button"
           value="Cancel"
@@ -141,8 +145,8 @@ function AddNewAddress(props) {
         <input
           type="button"
           value="Save Changes"
-          onClick={handleClick}
-          className="px-4 py-1 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer"
+          onClick={handleSaveAddressClick}
+          className="px-4 py-1 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer sm:mr-10 lg:mr-16"
         ></input>
       </div>
     </div>

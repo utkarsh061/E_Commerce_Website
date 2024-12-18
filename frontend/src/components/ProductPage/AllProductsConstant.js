@@ -1,6 +1,7 @@
 export const products = [
     {
         id:1,
+        productCode:"P01",
         imgURL:"/Images/red.jpg",
         title: "WROGN Men Red Shirt",
         rating:"4.2",
@@ -11,6 +12,7 @@ export const products = [
     },
     {
         id:2,
+        productCode:"P02",
         imgURL:"/Images/ref.png",
         title: "Panasonic Refrigerator",
         rating:"4.9",
@@ -21,6 +23,7 @@ export const products = [
     },
     {
         id:3,
+        productCode:"P03",
         imgURL:"/Images/hrx.jpg",
         title: "HRX SweatShirts",
         rating:"4.7",
@@ -31,6 +34,7 @@ export const products = [
     },
     {
         id:4,
+        productCode:"P04",
         imgURL:"/Images/novel.jpg",
         title: "Girl In The Room: Chetan Bhagat",
         rating:"4.3",
@@ -40,6 +44,7 @@ export const products = [
     },
     {
         id:5,
+        productCode:"P05",
         imgURL:"/Images/redmi.jpg",
         title: "Redmi Note 9 Pro Max",
         rating:"4.0",
@@ -50,6 +55,7 @@ export const products = [
     },
     {
         id:6,
+        productCode:"P06",
         imgURL:"/Images/redtshirtmain.jpg",
         title: "Red T-shirt by HRX",
         rating:"4.4",
@@ -60,6 +66,7 @@ export const products = [
     },
     {
         id:7,
+        productCode:"P07",
         imgURL:"/Images/puma.jpg",
         title: "Puma Shoes",
         rating:"3.5",
@@ -70,6 +77,7 @@ export const products = [
     },
     {
         id:8,
+        productCode:"P08",
         imgURL:"/Images/wwatch.jpg",
         title: "Curren Business Mens Watch",
         rating:"3.7",
@@ -79,6 +87,7 @@ export const products = [
     },
     {
         id:9,
+        productCode:"P09",
         imgURL:"/Images/jacket.jpg",
         title: "Faux Leather Jacket",
         rating:"3.9",
@@ -89,6 +98,7 @@ export const products = [
     },
     {
         id:10,
+        productCode:"P10",
         imgURL:"/Images/navy.jpg",
         title: "Navy Blue Jacket",
         rating:"4.4",
@@ -99,6 +109,7 @@ export const products = [
     },
     {
         id:11,
+        productCode:"P11",
         imgURL:"/Images/sneakers.jpg",
         title: "Nike Sneaker for Men",
         rating:"4.2",
@@ -109,6 +120,7 @@ export const products = [
     },
     {
         id:12,
+        productCode:"P12",
         imgURL:"/Images/bookshelf.jpg",
         title: "Murano Bookshelf",
         rating:"4.3",

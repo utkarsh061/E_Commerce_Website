@@ -104,11 +104,11 @@ function Cart(){
             { cartItems?.length != 0 && <div className="flex text-black">
                 <div className="basis-3/5"></div>
                 <div className="basis-2/5 border-t-2 border-black">
-                    <div className="mx-2 my-2 flex justify-end xl:pr-6 text-sm sm:text-base">
+                    <div className="mx-2 my-2 flex justify-center sm:mr-11 sm:justify-end xl:pr-6 text-sm sm:text-base">
                         <h1 className="pr-4">Total</h1>
                         <p>{NumberToString(total)}</p>
                     </div>
-                    <div className="pt-2 flex justify-end">
+                    <div className="pt-2 flex justify-end sm:mr-10">
                         <Link href={"/addressdetails"} className="text-white bg-black hover:bg-gray-700 px-12 py-2 rounded-3xl">
                             <span>
                                 <input type="button" value="Place Order"></input>

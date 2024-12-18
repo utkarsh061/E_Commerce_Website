@@ -5,14 +5,14 @@ import { Order } from "../models/order.model.js";
 import mongoose from "mongoose";
 
 const placeOrder = asyncHandler(async (req,res) => {
-    const { orders } = req.body  //expecting orders in an array
+    const {orders,deliveryAddress} = req.body  //expecting orders in an array
 
     if(orders?.length == 0  ){
         throw new ApiError(400,"Order Details Not found")
     }
 
     orders?.map((item) => {
-        if(!(item?.productCode && item?.quantity && item?.orderPrice && item?.category && item?.deliveryAddress)){
+        if(!(item?.productCode && item?.quantity && item?.price && item?.categorySelected && deliveryAddress.length != 0)){
             throw new ApiError(500,"All Mandatory Fields are not present")
         }
     })
@@ -22,10 +22,10 @@ const placeOrder = asyncHandler(async (req,res) => {
             await Order.create({
                 productCode:orders[i]?.productCode,
                 title:orders[i]?.title,
-                orderPrice:orders[i]?.orderPrice,
+                orderPrice:orders[i]?.price,
                 quantity:orders[i]?.quantity,
-                category:orders[i]?.category,
-                deliveryAddress:orders[i]?.deliveryAddress._id,
+                category:orders[i]?.categorySelected,
+                deliveryAddress:deliveryAddress._id,
                 deliveryStatus:"Order Placed",
                 userId:req.user._id
              })

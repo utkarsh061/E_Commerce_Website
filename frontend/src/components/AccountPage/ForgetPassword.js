@@ -7,7 +7,7 @@ import { resetPassword } from "@/app/apiCalls";
 import { useRouter } from "next/navigation";
 
 function ForgotPassword(props){
-    const {handlePasswordHide,isHidePassword} = props
+    const {handlePasswordHide,isHidePassword,setIsModalOpen,setForgotPasswordModal,setIsForgetPassword} = props
     const [emptyFields, setEmptyFields] = useState(false);
     const [isResetPasswordSuccessfull,setIsResetPasswordSuccessfull] = useState(true)
     const router = useRouter();
@@ -26,6 +26,11 @@ function ForgotPassword(props){
               setEmptyFields(false)
               let isResetPasswordChanged = await resetPassword(forgotPasswordData,router)
               setIsResetPasswordSuccessfull(isResetPasswordChanged)
+              isResetPasswordChanged && (
+                setForgotPasswordModal(true),
+                setIsForgetPassword(false),
+                setIsModalOpen(true)
+              )
             }
       };
 

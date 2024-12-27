@@ -44,7 +44,7 @@ export const RegisterUser = async (payload,router) => {
     if(resp?.data?.data){
         if(resp?.data?.success){
             registeredSuccessfully = true;
-            router.push("/")
+            router.push("/account")
         }
     }
     return registeredSuccessfully;
@@ -79,7 +79,7 @@ export const resetPassword = async (payload,router) => {
     if(resp?.data?.data){
         if(resp?.data?.success){
             resetPassWordSuccessfull = true;
-            router.push("/")
+            router.push("/account")
         }
     }
     return resetPassWordSuccessfull;

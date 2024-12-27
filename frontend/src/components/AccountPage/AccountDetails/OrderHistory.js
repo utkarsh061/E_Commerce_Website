@@ -14,12 +14,13 @@ function OrderHistory() {
       </h1>
       {allOrders?.length === 0 ? <NoData text="No Orders Yet" height="h-52" width="w-full" /> : 
         allOrders?.map((item) => 
-        <div className="border border-black mt-2 mx-4 rounded px-4 py-4 ">
-            <p className="font-bold">{item?.title}</p>
-            <p>{item?.orderPrice}
-            <label className="ml-4">Quantity: <span>{item?.quantity}</span></label>
-            <label className="ml-4">category: <span>{item?.category}</span></label>
-            </p>
+        <div className="border border-black mt-2 rounded p-2">
+            <p className="font-bold pl-2">{item?.title}</p>
+            <div className="flex justify-evenly lg:-ml-8">
+              <p>{item?.orderPrice}</p>
+              <p className="ml-4">Quantity: <span>{item?.quantity}</span></p>
+              <p className="ml-4">category: <span>{item?.category}</span></p>
+            </div>
         </div>)}
     </div>
   );

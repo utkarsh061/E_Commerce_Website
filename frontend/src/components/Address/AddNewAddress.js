@@ -140,13 +140,13 @@ function AddNewAddress(props) {
           type="button"
           value="Cancel"
           onClick={handleNewAddressClick}
-          className="border border-black px-4 py-1 rounded-full mr-4 cursor-pointer"
+          className="border border-black px-8 py-2 rounded-full mr-4 cursor-pointer hover:bg-gray-300"
         />
         <input
           type="button"
           value="Save Changes"
           onClick={handleSaveAddressClick}
-          className="px-4 py-1 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer sm:mr-10 lg:mr-16"
+          className="px-8 py-2 rounded-full text-white bg-black  hover:bg-gray-700 cursor-pointer sm:mr-10 lg:mr-16"
         ></input>
       </div>
     </div>

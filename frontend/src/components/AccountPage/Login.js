@@ -7,7 +7,8 @@ import { LoginUser } from "@/app/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
-function Login() {
+function Login(props) {
+  const { setIsModalOpen,setForgotPasswordModal } = props
   const [emptyFields, setEmptyFields] = useState(false);
   const [isValidCredentials , setIsValidCredentials] = useState(true);
   const dispatch = useDispatch();
@@ -59,6 +60,9 @@ function Login() {
           <ForgotPassword
             isHidePassword={isHidePassword}
             handlePasswordHide={handlePasswordHide}
+            setIsModalOpen={setIsModalOpen}
+            setForgotPasswordModal={setForgotPasswordModal}
+            setIsForgetPassword={setIsForgetPassword}
           />
         ) : (
           <>

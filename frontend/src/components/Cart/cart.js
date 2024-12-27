@@ -109,9 +109,9 @@ function Cart(){
                         <p>{NumberToString(total)}</p>
                     </div>
                     <div className="pt-2 flex justify-end sm:mr-10">
-                        <Link href={"/addressdetails"} className="text-white bg-black hover:bg-gray-700 px-12 py-2 rounded-3xl">
+                        <Link href={"/addressdetails"} className="text-white bg-black hover:bg-gray-700 px-8 py-2 rounded-3xl">
                             <span>
-                                <input type="button" value="Place Order"></input>
+                                <input type="button" value="Select Address"></input>
                             </span>
                         </Link>
                     </div>

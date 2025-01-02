@@ -22,7 +22,7 @@ function Footer() {
         <div className="mt-8 sm:mt-0 basis-2/6 text-gray-500 flex flex-col justify-center items-center">
           <div className="border-4 border-double border-gray-600">
             <h2 className="py-1 px-2 font-bold font-sans text-center text-xl">
-              Ur's Store
+              Ur&apos;s Store
             </h2>
           </div>
           <p className="text-center mt-8">

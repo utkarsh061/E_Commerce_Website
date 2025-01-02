@@ -62,7 +62,7 @@ function Cart(){
             { cartItems?.length === 0 ? <NoData text="No Items In Cart" height="h-52"/>
             : cartItems?.map((item,index) => {
                 return (
-                    <div className="flex text-black border-b-2 py-1">
+                    <div className="flex text-black border-b-2 py-1" key={index}>
                         <div className="basis-3/5 flex">
                             <div>
                                 <img src={item.imgURL} className="w-24 h-24 my-1 mx-2"></img>

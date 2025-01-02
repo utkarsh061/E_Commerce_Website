@@ -47,7 +47,7 @@ function Addresssection(props){
             <div className="mx-auto my-8 max-w-6xl px-8">
                 { addressDetails?.length != 0 ? addressDetails?.map((item,index) => {
                     return (
-                        <div className="px-2 py-2 flex flex-row">
+                        <div className="px-2 py-2 flex flex-row" key={index}>
                         <input
                             type="radio"
                             className="mx-4"

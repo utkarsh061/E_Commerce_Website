@@ -35,7 +35,6 @@ function SingleProductInfo(props) {
           }
           return item
         })
-        console.log(data)
         dispatch(setCartItems(data))  
       }else{
         selectedDataObj.quantity = 1  ;
@@ -72,8 +71,8 @@ function SingleProductInfo(props) {
             <option value="" disabled selected>
               Select option
             </option>
-            {individualPageItem?.category?.map((item) => (
-              <option>{item}</option>
+            {individualPageItem?.category?.map((item,index) => (
+              <option key={index}>{item}</option>
             ))}
           </select>
         )}

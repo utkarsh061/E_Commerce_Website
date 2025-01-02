@@ -13,8 +13,8 @@ function OrderHistory() {
         Your Order History
       </h1>
       {allOrders?.length === 0 ? <NoData text="No Orders Yet" height="h-52" width="w-full" /> : 
-        allOrders?.map((item) => 
-        <div className="border border-black mt-2 rounded p-2">
+        allOrders?.map((item,index) => 
+        <div className="border border-black mt-2 rounded p-2" key={index}>
             <p className="font-bold pl-2">{item?.title}</p>
             <div className="flex justify-evenly lg:-ml-8">
               <p>{item?.orderPrice}</p>

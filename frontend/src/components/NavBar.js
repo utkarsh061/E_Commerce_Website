@@ -36,7 +36,7 @@ function NavBar(){
     return (
        <div className="w-full my-4 flex relative">
          <div className="bg-black border-4 border-double border-white min-w-44 max-h-12">
-            <h1 className="text-white px-2 font-bold font-sans text-center text-3xl">Ur's Store</h1>
+            <h1 className="text-white px-2 font-bold font-sans text-center text-3xl">Ur&apos;s Store</h1>
          </div>
          <div className="w-4/5 text-white">
             <nav className="my-2.5 bg-gradient-to-r from-gray-400 to-black text-right px-2 relative">

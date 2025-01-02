@@ -7,8 +7,8 @@ function Testimonials(){
 return (
     <div className="mx-auto my-0 max-w-6xl px-8">
         <div className="sm:flex my-8">
-            {Details.map((item) => (
-                <div className="shadow-lg hover:shadow-2xl mx-2 px-8 py-8 rounded h-11/12 flex-auto basis-1/3">
+            {Details.map((item,index) => (
+                <div className="shadow-lg hover:shadow-2xl mx-2 px-8 py-8 rounded h-11/12 flex-auto basis-1/3" key={index}>
                     <FontAwesomeIcon icon={faQuoteLeft} className="text-orange-600 text-center justify-self-auto h-9/12 w-9/12"/>
                         <p dangerouslySetInnerHTML={{ __html: item.description }} />
                         <FontAwesomeIcon icon={faQuoteRight} className="text-orange-600 h-9/12 w-9/12 mb-4"/>

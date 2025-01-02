@@ -19,6 +19,21 @@ export const postService = async (apiURL, payload,additionalHeaders = {}) => {
     }
 }
 
+export const patchService = async (apiURL, payload,additionalHeaders = {}) => {
+    try {
+        const result = await axios.patch(apiURL,payload,{
+            headers:{
+                "Content-Type":"application/json",
+                ...additionalHeaders
+            },
+        });
+        return result;
+    } catch (error) {
+        console.log(`${apiURL} failed to run`)
+        // return { success: false, message: error.message };
+    }
+}
+
 export const getService = async (apiURL,additionalHeaders = {}) => {
     try {
         const result = await axios.get(apiURL,{

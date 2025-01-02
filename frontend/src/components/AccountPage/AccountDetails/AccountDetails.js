@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import OrderHistory from "./OrderHistory";
 import { useDispatch, useSelector } from "react-redux";
-import { getAccountDetails, LogOutUser,getOrderDetails } from "@/app/apiCalls";
+import { getAccountDetails, LogOutUser,getOrderDetails, updateAccountDetailsApiCall } from "@/app/apiCalls";
 import { useRouter } from "next/navigation";
 import { setAddressDetails } from "@/app/redux/applicationSlice";
 import Modal from "@/components/Modal/Modal.js";
@@ -11,8 +11,15 @@ import Modal from "@/components/Modal/Modal.js";
 function AccountDetails(){
     const [ inputDisabled,setInputDisabled] = useState(true)
     const [ isModalOpen , setIsModalOpen ] = useState(false)
+    const [ isUpdateAccountModalOpen, setIsUpdatedAccountModalOpen ] = useState(false)
     const applicationData = useSelector((state) => state.application)
-    const {accoutDetails} = applicationData
+    const { accoutDetails } = applicationData;
+    const [ localAccountDetails, setLocalAccountDetails ] = useState({
+        username:accoutDetails.username,
+        fullName:accoutDetails.fullName,
+        email:accoutDetails.email,
+        phoneNumber:accoutDetails.phoneNumber
+    })
     const router = useRouter();
     const dispatch = useDispatch();
 
@@ -21,13 +28,21 @@ function AccountDetails(){
         getOrderDetails(dispatch)
     },[])
 
-    const handleEditClick = () => {
-        if(inputDisabled) setInputDisabled(false)
-        else {
-            setInputDisabled(true)
+    const handleEditClick = async (event) => {
+        const { name } = event.target;
+        if(name === "save"){
+            let detailsUpdated = await updateAccountDetailsApiCall(localAccountDetails)
+            detailsUpdated && setIsUpdatedAccountModalOpen(true)
         }
+       setInputDisabled(!inputDisabled)
     }
     const handleCancelClick = () => {
+        setLocalAccountDetails({
+            username:accoutDetails.username,
+            fullName:accoutDetails.fullName,
+            email:accoutDetails.email,
+            phoneNumber:accoutDetails.phoneNumber
+        })
         setInputDisabled(true)
     }
     const handleLogOut = () => {
@@ -38,8 +53,16 @@ function AccountDetails(){
         setIsModalOpen(false)
     }
 
+    const AccountModalClose = () => {
+        setIsUpdatedAccountModalOpen(false)
+    }
+
     const handleInputChange = (event) => {
-        console.log(event.target)
+        const { name , value } = event.target;
+        setLocalAccountDetails((prevState) => ({
+            ...prevState,
+            [name] : value
+        }));
     }
 
     return (
@@ -52,29 +75,37 @@ function AccountDetails(){
                     <input 
                     type="text"
                     placeholder="Username" 
-                    value={accoutDetails.username}
+                    value={localAccountDetails.username}
                     className="border border-black py-1 px-2 rounded w-full" 
+                    disabled={true}
+                    />
+                    <input 
+                    type="text" 
+                    placeholder="Full Name" 
+                    name="fullName"
+                    value={localAccountDetails.fullName}
+                    className="border mt-4 border-black py-1 px-2 rounded w-full" 
                     disabled={inputDisabled}
                     onChange={handleInputChange}
                     />
                     <input 
                     type="text" 
-                    placeholder="Full Name" 
-                    value={accoutDetails.fullName}
-                    className="border mt-4 border-black py-1 px-2 rounded w-full" 
-                    disabled={inputDisabled}/>
-                    <input 
-                    type="text" 
                     placeholder="Email Id"
-                    value={accoutDetails.email} 
+                    name="email"
+                    value={localAccountDetails.email} 
                     className="border mt-4 border-black py-1 px-2 rounded w-full" 
-                    disabled={inputDisabled}/>
+                    disabled={inputDisabled}
+                    onChange={handleInputChange}
+                    />
                     <input 
                     type="text" 
                     placeholder="Phone Number"
-                    value={accoutDetails.phoneNumber} 
+                    name="phoneNumber"
+                    value={localAccountDetails.phoneNumber} 
                     className="border mt-4 border-black py-1 px-2 rounded w-full" 
-                    disabled={inputDisabled}/>
+                    disabled={inputDisabled}
+                    onChange={handleInputChange}
+                    />
                     <div className={`${inputDisabled ? "flex sm:mt-4" : "sm:flex"} justify-between items-baseline`}>
                         <input
                         type="submit"
@@ -91,6 +122,7 @@ function AccountDetails(){
                         />
                         <input
                         type="submit"
+                        name={inputDisabled ? "edit" : "save"}
                         value={inputDisabled ? "Edit Details" : "Save Changes"}
                         className="w-fit hover:cursor-pointer text-white bg-gray-700 hover:bg-black px-8 py-2 rounded-3xl flex justify-center"
                         onClick={handleEditClick}
@@ -109,6 +141,14 @@ function AccountDetails(){
                handleCancelButtonClick={handleLogOut}
                buttonTitle="Confirm"
                doubleButton = {true}
+            />
+            }
+            {isUpdateAccountModalOpen &&
+            <Modal 
+               description="Account Details Updated Successfully" 
+               handleMainbuttonClick={AccountModalClose}
+               handleCancelButtonClick={AccountModalClose}
+               buttonTitle="Okay"
             />
             }
         </div>

@@ -22,7 +22,7 @@ function ContactUs() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       [
         formDetails.fullName,
@@ -34,7 +34,7 @@ function ContactUs() {
       setEmptyFields(true);
     else {
       setEmptyFields(false);
-      let isQueryPlaced = queryApiCall(formDetails);
+      let isQueryPlaced = await queryApiCall(formDetails);
       isQueryPlaced && setIsModalOpen(true)
     }
   };

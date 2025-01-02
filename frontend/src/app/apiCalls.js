@@ -8,10 +8,12 @@ import {
     getAllDeliveryAddress,
     addDeliveryAddress,
     placeOrder,
-    queryURL
+    queryURL,
+    getUpdateAccountDetails
 } from "./apiEndPoints"
 import { 
     getService, 
+    patchService, 
     postService 
 } from "./globalUtils"
 import { 
@@ -127,4 +129,16 @@ export const queryApiCall = async(payload) => {
         queryPlacedSuccessfully=true
     }
     return queryPlacedSuccessfully;
+}
+export const updateAccountDetailsApiCall = async (payload) => {
+    let detailsUpdated = false;
+    let accessToken = localStorage.getItem("accessToken")
+    const resp = await patchService(getUpdateAccountDetails,payload,{
+        "Authorization": `Bearer ${accessToken}`,
+    })
+    if(resp?.data?.success){
+        detailsUpdated = true;
+    }
+    return detailsUpdated;
+    
 }

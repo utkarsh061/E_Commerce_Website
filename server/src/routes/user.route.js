@@ -4,7 +4,8 @@ import { addDeliveryAddress, forgotPassword,
      getUserAccountDetails, 
      loginUser, 
      registerUser, 
-     updateAccountDetails
+     updateAccountDetails,
+     postQuery
     } from "../controllers/user.controller.js";
 import verifyUserJWT from "../middlewares/auth.middleware.js";
 
@@ -19,5 +20,8 @@ router.get("/accountDetails",verifyUserJWT,getUserAccountDetails)
 router.get("/allDeliveryAddress",verifyUserJWT,getDeliveryAddress)
 router.post("/addDeliveryAddress",verifyUserJWT,addDeliveryAddress)
 router.patch("/updateAccountDetails",verifyUserJWT,updateAccountDetails)
+
+//Query
+router.post("/query",postQuery)
 
 export default router

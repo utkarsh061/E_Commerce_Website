@@ -15,3 +15,6 @@ export const addDeliveryAddress = `${localApiUrl}/users/addDeliveryAddress`;
 export const getOrderHistory = `${localApiUrl}/orders/orderHistory `;
 export const placeOrder = `${localApiUrl}/orders/placeOrder`;
 
+//Query URL
+export const queryURL = `${localApiUrl}/users/query`;
+

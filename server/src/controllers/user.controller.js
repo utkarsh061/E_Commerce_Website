@@ -5,6 +5,7 @@ import { User } from "../models/user.model.js";
 import { options } from "../constants.js";
 import { Address } from "../models/address.model.js";
 import mongoose from "mongoose";
+import { Query } from "../models/query.model.js";
 
 const generateAccessTokenController = async (userID) => {
     try {
@@ -88,7 +89,7 @@ const loginUser = asyncHandler(async (req,res) =>{
     const loggedInUserObj = loggedInUser.toObject();  
     loggedInUserObj.accessToken = accessToken;
     //sending the response to UI
-    return res.status(200).cookie("accessToken",accessToken,options).json(
+    return res.status(200).json(
         new ApiResponse(
             200,
             loggedInUserObj,
@@ -230,4 +231,29 @@ const updateAccountDetails = asyncHandler(async (req,res) => {
     )
 })
 
-export {registerUser,loginUser,getUserAccountDetails,forgotPassword,getDeliveryAddress,addDeliveryAddress,updateAccountDetails}
+const postQuery = asyncHandler(async (req,res) => {
+    const { fullName,email,phoneNumber,query } = req.body
+    console.log(req.body)
+
+    if(!(query && email && fullName && phoneNumber)){
+        throw new ApiError(400,"All fields are required")
+    }
+
+    const QueryMessage = await Query.create({
+        fullName,
+        email,
+        phoneNumber,
+        query
+    })
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            QueryMessage,
+            "Query have been submitted"
+        )
+    )
+    
+})
+
+export {registerUser,loginUser,getUserAccountDetails,forgotPassword,getDeliveryAddress,addDeliveryAddress,updateAccountDetails,postQuery}

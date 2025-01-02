@@ -7,7 +7,8 @@ import {
     forgotPassword,
     getAllDeliveryAddress,
     addDeliveryAddress,
-    placeOrder
+    placeOrder,
+    queryURL
 } from "./apiEndPoints"
 import { 
     getService, 
@@ -117,4 +118,13 @@ export const placeOrderApiCall = async (payload) => {
     }
     return orderPlacedSuccessfully;
     
+}
+
+export const queryApiCall = async(payload) => {
+    let queryPlacedSuccessfully = false;
+    const resp = await postService(queryURL,payload)
+    if(resp?.data?.success){
+        queryPlacedSuccessfully=true
+    }
+    return queryPlacedSuccessfully;
 }

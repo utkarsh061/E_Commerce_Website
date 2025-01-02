@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend of Utkarsh's E-Commerce_Website",
-  "main": "src/index.js",
+  "main": "api/app.js",
   "type": "module",
   "scripts": {
-    "start": " nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    "start": " nodemon -r dotenv/config --experimental-json-modules api/app.js"
   },
   "author": "Utkarsh Garg",
   "license": "ISC",

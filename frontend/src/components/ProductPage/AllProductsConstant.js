@@ -46,12 +46,23 @@ export const products = [
         id:5,
         productCode:"P05",
         imgURL:"/Images/redmi.jpg",
-        title: "Redmi Note 9 Pro Max",
+        title: "Redmi Note 9 Pro Max (Latest Edition)",
         rating:"4.0",
         review:"115",
         price:19999.00,
         category:["16GB 128GB","16GB 2568GB","32GB 356GB"],
         description:"Give your Gadget an upgrade with Redmi Note 9 Pro Max. With Expandable Memory upto 256GB."
+    },
+    {
+        id:8,
+        productCode:"P08",
+        imgURL:"/Images/wwatch.jpg",
+        title: "Curren Business Mens Watch",
+        rating:"3.7",
+        review:"27",
+        category:["Free Size"],
+        price:15999.00,
+        description:"Give your summer wardrobe a Watch Collection an upgrade with Curren Business Watch. Team it with Formal set or Casual outfit for an evening out with the guyz."
     },
     {
         id:6,
@@ -74,16 +85,6 @@ export const products = [
         price:1599.00,
         category:["UK 6","UK 7","UK 8","UK 9"],
         description:"Give your summer wardrobe a style upgrade with Puma Shoes. Team it with a pair of shorts for your morning workout or a denims for an evening out with the guyz."
-    },
-    {
-        id:8,
-        productCode:"P08",
-        imgURL:"/Images/wwatch.jpg",
-        title: "Curren Business Mens Watch",
-        rating:"3.7",
-        review:"27",
-        price:15999.00,
-        description:"Give your summer wardrobe a Watch Collection an upgrade with Curren Business Watch. Team it with Formal set or Casual outfit for an evening out with the guyz."
     },
     {
         id:9,

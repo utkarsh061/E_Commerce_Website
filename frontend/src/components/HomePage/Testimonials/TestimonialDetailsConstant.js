@@ -1,7 +1,7 @@
 export const Details = [
     {
         imgURL:"/Images/vicky.jpg",
-        description:"<b>Ur's store</b> is quite useful & convenient to shop any of the products.It has specific details & is easy to browse through various sections",
+        description:"<b>Ur's store</b> is quite useful & convenient to shop .It has specific details & is easy to browse through various sections",
         name:"Vicky Kumar"
     },
     {

@@ -8,28 +8,35 @@ function IndividualItem(props){
     const {imgURL,title,rating,review,price,handleClick} = props
     return (
         <>
-        <Link href={"/singleproduct"} className="pt-4 px-2 shadow-xl flex-auto basis-1/4 hover:shadow-2xl">
+        <Link href={"/singleproduct"} className="flex-auto basis-1/4 hover:shadow-2xl m-2">
             <div 
-            onClick={handleClick}
-            >
-                <div className="mb-2">
-                <img src={imgURL} className="w-full max-h-96 md:h-56 md:w-96"></img>
-                </div>
-                <div className='flex flex-col items-center md:items-start'>
-                    <div className="font-semibold text-gray-600 text-left pl-2 mb-1 text-base">
-                        <p>{title}</p>
-                    </div>
-                    <div className='text-gray-600 text-left pl-2 mb-1 text-sm'>
-                        <span>
-                            {rating}
-                        </span>
-                        <FontAwesomeIcon icon={faStar} className='text-red-600 px-1' />
-                        <span>
+        className="max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full" 
+        onClick={handleClick}
+    >
+        <div>
+            <img 
+                className="rounded-t-lg w-full max-h-96 md:h-72 md:w-96" 
+                src={imgURL} 
+                alt={title || "Image"}
+            />
+        </div>
+        <div className="p-5">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {title}
+            </h5>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {rating && (
+                    <>
+                        {rating} 
+                        <FontAwesomeIcon icon={faStar} className="text-red-600 px-1" />
                         | ({review})
-                        </span>
-                    </div>
-                    <div className="text-gray-600 text-left pl-2 mb-2 text-sm">{NumberToString(price)}</div>
-                </div>
+                    </>
+                )}
+            </p>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {NumberToString(price)}
+            </p>
+        </div>
             </div>
         </Link>
         </>

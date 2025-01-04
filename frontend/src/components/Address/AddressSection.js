@@ -15,7 +15,7 @@ function Addresssection(props){
     const dispatch = useDispatch()
     const router = useRouter();
     const applicationData = useSelector((state) => state.application)
-    const { addressDetails,cartItems } = applicationData
+    const { addressDetails,cartItems,isUserLoggedIn } = applicationData
     
     useEffect(() => {
         getDeliveryAddress(dispatch);
@@ -66,14 +66,15 @@ function Addresssection(props){
                     )
                 }): 
                 <NoData text="No Saved Address" height="h-72 mb-2"/>} 
-                <p className="flex justify-end underline text-blue-600">
+                <p className="flex justify-end text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
                 <span onClick={handleNewAddressClick} className="cursor-pointer">Add New Address</span></p>
                 <div className="flex justify-end mt-4">
                 <input 
                 type="button" 
                 value="Place Order" 
-                className="px-8 py-2 rounded-full text-white bg-black  hover:bg-gray-700 cursor-pointer"
+                className={`px-12 py-2 rounded-2xl text-white bg-black  hover:bg-gray-800 ${!isUserLoggedIn ? "cursor-not-allowed" : "cursor-pointer"}`}
                 onClick={handlePlaceOrder}
+                disabled={!isUserLoggedIn}
                 />
                 </div>
             </div>

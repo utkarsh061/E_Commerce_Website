@@ -56,7 +56,7 @@ function SingleProductInfo(props) {
     <div>
         <img src={individualPageItem.imgURL} className="object-cover w-96 rounded-l-lg h-96 md:h-96 md:w-96" alt="" />
     </div>
-    <div className="flex flex-col justify-between p-4 leading-normal text-center md:text-left">
+    <div className="flex flex-col justify-between p-6 leading-normal text-center md:text-left">
         <h5 className="mb-0.5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {individualPageItem.title}
         </h5>
@@ -100,7 +100,7 @@ function SingleProductInfo(props) {
             {individualPageItem?.description}
         </p>
         <div
-            className="mt-4 text-white bg-gray-700  hover:bg-black px-6 py-2 rounded-3xl flex justify-center w-full md:w-fit"
+            className="mt-4 text-white bg-black  hover:bg-gray-800 px-12 py-2 rounded-3xl flex justify-center w-full md:w-fit"
             onClick={() => handleClick(individualPageItem)}
         >
             <input

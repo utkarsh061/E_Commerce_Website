@@ -81,7 +81,7 @@ function NavBar(){
         <li>
           <Link
             href="/"
-            className="block py-2 px-3 text-white hover:bg-black md:hover:bg-transparent hover:text-white text-gray-900 rounded md:bg-transparent md:p-0 md:hover:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+            className="block py-2 px-3 hover:bg-black md:hover:bg-transparent hover:text-white text-gray-900 rounded md:bg-transparent md:p-0 md:hover:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
             aria-current="page"
           >
             Home
@@ -90,7 +90,7 @@ function NavBar(){
         <li>
           <Link
             href="/products"
-            className="block py-2 px-3 text-gray-900 text-white hover:bg-black md:hover:bg-transparent rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            className="block py-2 px-3 text-gray-900 hover:text-white hover:bg-black md:hover:bg-transparent rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Products
           </Link>
@@ -98,7 +98,7 @@ function NavBar(){
         <li>
           <Link
             href="/about"
-            className="block py-2 px-3 text-gray-900 text-white hover:bg-black md:hover:bg-transparent rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            className="block py-2 px-3 text-gray-900 hover:text-white hover:bg-black md:hover:bg-transparent rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             About
           </Link>
@@ -106,7 +106,7 @@ function NavBar(){
         <li>
           <Link
             href="/contact"
-            className="block py-2 px-3 text-gray-900 rounded text-white hover:bg-black md:hover:bg-transparent hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Contact Us
           </Link>
@@ -114,7 +114,7 @@ function NavBar(){
         <li>
           <Link
             href="/account"
-            className="block py-2 px-3 text-gray-900 rounded text-white hover:bg-black md:hover:bg-transparent hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Account
           </Link>
@@ -122,7 +122,7 @@ function NavBar(){
         <li>
           <Link
             href="/cart"
-            className="block py-2 px-3 text-gray-900 rounded text-white hover:bg-black md:hover:bg-transparent hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
             Cart
             {cartItems?.length > 0 && (

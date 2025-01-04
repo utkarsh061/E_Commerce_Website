@@ -4,8 +4,8 @@ import Link from "next/link";
 function Footer() {
   return (
       <div className="mx-auto my-0 w-full bg-black p-10 text-white absolute text-center sm:text-left">
-        <div className="sm:flex sm:flex-wrap mx-auto my-0 max-w-6xl sm:items-center">
-          <div className="basis-4/12">
+        <div className="sm:flex sm:justify-center sm:flex-wrap mx-auto my-0 max-w-6xl sm:items-center">
+          <div className="basis-3/12">
             <h3 className="font-bold">Download Our App</h3>
             <p className="text-sm text-gray-600 mt-4">
               Download App for Android & IOS mobile phone.
@@ -30,20 +30,44 @@ function Footer() {
             Accessible to the Many.
           </p>
         </div>
-        <div className="basis-4/12 text-center mt-8 sm:mt-0">
+        <div className="basis-3/12 text-center mt-8 sm:mt-0">
           <h3 className="font-bold text-lg">Follow Us</h3>
           <ul className="mt-4 text-sm text-gray-500 flex justify-evenly">
             <li className="mb-1">
-              <Link href={"https://www.facebook.com/"} target="_blank">Facebook</Link>
+              <Link href={"https://www.facebook.com/"} target="_blank">
+              <img
+                src="/Images/facebook.png"
+                className="h-8 rounded-md"
+                alt="Facebook"
+              />
+              </Link>
             </li>
             <li className="mb-1">
-              <Link href={"https://www.instagram.com/"} target="_blank">Instagram</Link>
+              <Link href={"https://www.instagram.com/"} target="_blank">
+              <img
+                src="/Images/instagram.svg.png"
+                className="h-8 rounded-md"
+                alt="Instagram"
+              />
+              </Link>
             </li>
             <li className="mb-1">
-              <Link href={"https://x.com/?lang=en"} target="_blank">Twitter</Link>
+              <Link href={"https://x.com/?lang=en"} target="_blank">
+              <img
+                src="/Images/twitter.png"
+                className="h-8 rounded-md"
+                alt="Twitter"
+              />
+              </Link>
             </li>
             <li className="mb-1">
-              <Link href={"https://www.youtube.com/"} target="_blank">Youtube</Link>
+              <Link href={"https://www.youtube.com/"} target="_blank">
+              <img
+                src="/Images/youtube.svg.png"
+                className="h-8 rounded-md"
+                alt="Youtube"
+              />
+              </Link>
             </li>
           </ul>
         </div>

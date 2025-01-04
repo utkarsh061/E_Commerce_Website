@@ -50,106 +50,185 @@ function AddNewAddress(props) {
     });
   };
   return (
-    <div className="flex flex-col mx-auto my-8 max-w-6xl px-8 ">
+    <form className="max-w-6xl mx-auto p-6 md:p-8 flex flex-col items-center">
       {isFieldEmpty && (
-        <div className="mt-2 flex justify-around">
-          <label className="text-red-600 font-medium text-xs ">
-            All (*) fields are Mandatory
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-red-600">
+            All (*) fields are mandatory
           </label>
         </div>
       )}
-      <div className="mt-2 flex justify-around">
-        <label className="basis-1/4">Address Line 1* </label>
+      <div className="mb-5 w-full lg:w-1/2">
+        <label
+          htmlFor="addressLine1"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Address Line 1*
+        </label>
         <input
           type="text"
+          id="addressLine1"
           name="addressLine1"
           value={addressDetailsObj.addressLine1}
           onChange={handleChange}
-          placeholder=" Address Line 1"
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
+          placeholder="Address Line 1"
+          className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+            isFieldEmpty && !addressDetailsObj.addressLine1.trim()
+              ? "border-red-500"
+              : "border-gray-300"
+          }`}
+          required
+        />
       </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">Address Line 2</label>
+      <div className="mb-5 w-full lg:w-1/2">
+        <label
+          htmlFor="addressLine2"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Address Line 2
+        </label>
         <input
           type="text"
-          placeholder=" Address Line 2"
+          id="addressLine2"
           name="addressLine2"
           value={addressDetailsObj.addressLine2}
           onChange={handleChange}
-          className="border-black border basis-2/4 rounded"
-        ></input>
+          placeholder="Address Line 2"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
       </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">City*</label>
+      <div className="mb-5 w-full lg:w-1/2 flex gap-4">
+          <div className="basis-1/2">
+            <label
+              htmlFor="city"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              City*
+            </label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={addressDetailsObj.city}
+              onChange={handleChange}
+              placeholder="City"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                isFieldEmpty && !addressDetailsObj.city.trim()
+                  ? "border-red-500"
+                  : "border-gray-300"
+              }`}
+              required
+            />
+          </div>
+          <div className="basis-1/2 ">
+            <label
+              htmlFor="district"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              District*
+            </label>
+            <input
+              type="text"
+              id="district"
+              name="district"
+              value={addressDetailsObj.district}
+              onChange={handleChange}
+              placeholder="District"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                isFieldEmpty && !addressDetailsObj.district.trim()
+                  ? "border-red-500"
+                  : "border-gray-300"
+              }`}
+              required
+            />
+          </div>
+      </div>
+      <div className="mb-5 w-full lg:w-1/2">
+        <label
+          htmlFor="state"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          State*
+        </label>
         <input
           type="text"
-          placeholder=" City"
-          name="city"
-          value={addressDetailsObj.city}
-          onChange={handleChange}
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
-      </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">District*</label>
-        <input
-          type="text"
-          placeholder=" District"
-          name="district"
-          value={addressDetailsObj.district}
-          onChange={handleChange}
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
-      </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">State* </label>
-        <input
-          type="text"
-          placeholder=" State"
+          id="state"
           name="state"
           value={addressDetailsObj.state}
           onChange={handleChange}
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
-      </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">Country*</label>
-        <input
-          type="text"
-          placeholder=" Country"
-          name="country"
-          value={addressDetailsObj.country}
-          onChange={handleChange}
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
-      </div>
-      <div className="flex justify-around mt-2">
-        <label className="basis-1/4">Pincode*</label>
-        <input
-          type="text"
-          placeholder=" Pincode"
-          name="pinCode"
-          value={addressDetailsObj.pinCode}
-          onChange={handleChange}
-          className={`border-black border basis-2/4 rounded ${isFieldEmpty && "border-2 border-red-500"}`}
-        ></input>
-      </div>
-      <div className="flex flex-row justify-end mr-16 sm:mr-32 mt-8 w-full">
-        <input
-          type="button"
-          value="Cancel"
-          onClick={handleNewAddressClick}
-          className="border border-black px-8 py-2 rounded-full mr-4 cursor-pointer hover:bg-gray-300"
+          placeholder="State"
+          className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+            isFieldEmpty && !addressDetailsObj.state.trim()
+              ? "border-red-500"
+              : "border-gray-300"
+          }`}
+          required
         />
-        <input
-          type="button"
-          value="Save Changes"
-          onClick={handleSaveAddressClick}
-          className="px-8 py-2 rounded-full text-white bg-black  hover:bg-gray-700 cursor-pointer sm:mr-10 lg:mr-16"
-        ></input>
       </div>
-    </div>
+      <div className="mb-5 w-full lg:w-1/2 flex gap-4">
+        <div className="basis-1/2">
+          <label
+            htmlFor="country"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Country*
+          </label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            value={addressDetailsObj.country}
+            onChange={handleChange}
+            placeholder="Country"
+            className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+              isFieldEmpty && !addressDetailsObj.country.trim()
+                ? "border-red-500"
+                : "border-gray-300"
+            }`}
+            required
+          />
+        </div>
+        <div className="basis-1/2">
+          <label
+            htmlFor="pinCode"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Pincode*
+          </label>
+          <input
+            type="text"
+            id="pinCode"
+            name="pinCode"
+            value={addressDetailsObj.pinCode}
+            onChange={handleChange}
+            placeholder="Pincode"
+            className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+              isFieldEmpty && !addressDetailsObj.pinCode.trim()
+                ? "border-red-500"
+                : "border-gray-300"
+            }`}
+            required
+          />
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <button
+          type="button"
+          onClick={handleNewAddressClick}
+          className="text-gray-900 border border-gray-300 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          onClick={handleSaveAddressClick}
+          className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+
   );
 }
 

@@ -13,7 +13,7 @@ function SingleProduct(){
     const { individualPageItem} = applicationData
     const dispatch = useDispatch()
     return(
-        <div className="mx-auto my-0 max-w-6xl px-8">
+        <div className="mx-auto my-0 md:my-4 max-w-6xl px-8">
             <SingleProductInfo
                 individualPageItem={individualPageItem}
             />

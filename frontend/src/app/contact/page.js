@@ -45,7 +45,7 @@ function ContactUs() {
 
   return (
     <div>
-      <div className="mx-auto h-fit max-w-6xl px-8 flex flex-col">
+      <div className="mx-auto h-fit max-w-6xl px-8 my-4 flex flex-col">
         <h1 className="font-bold flex justify-center text-4xl font-serif tracking-wider">
           Contact Us
         </h1>
@@ -57,69 +57,99 @@ function ContactUs() {
             All fields are required
           </p>
         )}
-        <p className="flex justify-center mt-2">Full Name </p>
-        <div className="flex justify-center">
-          <input
-            type="text"
-            name="fullName"
-            value={formDetails.fullName}
-            placeholder=" Full Name"
-            className={`${
-              emptyFields ? "border-red-500" : "border-black"
-            } border rounded w-full sm:w-1/2`}
-            onChange={handleInputChange}
-          />
-        </div>
+        <form className="flex flex-col items-center py-4">
+          <div className="mb-5 w-full lg:w-1/2">
+            <label
+              htmlFor="fullName"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formDetails.fullName}
+              placeholder="Full Name"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                emptyFields ? "border-red-500" : "border-gray-300"
+              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
 
-        <p className="flex justify-center mt-2">Email </p>
-        <div className="flex justify-center">
-          <input
-            type="text"
-            placeholder=" Email"
-            name="email"
-            value={formDetails.email}
-            className={`${
-              emptyFields ? "border-red-500" : "border-black"
-            } border rounded w-full sm:w-1/2`}
-            onChange={handleInputChange}
-          />
-        </div>
+          <div className="mb-5 w-full lg:w-1/2">
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formDetails.email}
+              placeholder="Email"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                emptyFields ? "border-red-500" : "border-gray-300"
+              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
 
-        <p className="flex justify-center mt-2">Phone Number </p>
-        <div className="flex justify-center">
-          <input
-            type="text"
-            placeholder=" Phone Number"
-            value={formDetails.phoneNumber}
-            name="phoneNumber"
-            className={`${
-              emptyFields ? "border-red-500" : "border-black"
-            } border rounded w-full sm:w-1/2`}
-            onChange={handleInputChange}
-          ></input>
-        </div>
+          <div className="mb-5 w-full lg:w-1/2">
+            <label
+              htmlFor="phoneNumber"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formDetails.phoneNumber}
+              placeholder="Phone Number"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                emptyFields ? "border-red-500" : "border-gray-300"
+              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
 
-        <p className="flex justify-center mt-2">Query</p>
-        <div className="flex justify-center">
-          <textarea
-            type="text"
-            name="query"
-            value={formDetails.query}
-            placeholder=" Query"
-            className={`${
-              emptyFields ? "border-red-500" : "border-black"
-            } border rounded w-full sm:w-1/2`}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
-        <div className="flex justify-center mt-4 mb-8">
-          <input
+          <div className="mb-5 w-full lg:w-1/2">
+            <label
+              htmlFor="query"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Query
+            </label>
+            <textarea
+              id="query"
+              name="query"
+              value={formDetails.query}
+              placeholder="Your Query"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
+                emptyFields ? "border-red-500" : "border-gray-300"
+              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              onChange={handleInputChange}
+              required
+            ></textarea>
+          </div>
+
+          <button
             type="submit"
-            value="Submit"
-            className="px-8 py-2 rounded-full text-white bg-gray-700  hover:bg-gray-800 cursor-pointer w-full sm:w-fit"
+            className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-sm w-full sm:w-auto px-12 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={handleSubmit}
-          />
-        </div>
+          >
+            Submit
+          </button>
+        </form>
+
       </div>
       {isModalOpen &&
           <Modal 

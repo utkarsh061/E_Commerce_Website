@@ -61,7 +61,7 @@ function ContactUs() {
           <div className="mb-5 w-full lg:w-1/2">
             <label
               htmlFor="fullName"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               Full Name
             </label>
@@ -73,7 +73,7 @@ function ContactUs() {
               placeholder="Full Name"
               className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
                 emptyFields ? "border-red-500" : "border-gray-300"
-              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              }`}
               onChange={handleInputChange}
               required
             />
@@ -82,7 +82,7 @@ function ContactUs() {
           <div className="mb-5 w-full lg:w-1/2">
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               Email
             </label>
@@ -94,7 +94,7 @@ function ContactUs() {
               placeholder="Email"
               className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
                 emptyFields ? "border-red-500" : "border-gray-300"
-              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              }`}
               onChange={handleInputChange}
               required
             />
@@ -103,7 +103,7 @@ function ContactUs() {
           <div className="mb-5 w-full lg:w-1/2">
             <label
               htmlFor="phoneNumber"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               Phone Number
             </label>
@@ -115,7 +115,7 @@ function ContactUs() {
               placeholder="Phone Number"
               className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
                 emptyFields ? "border-red-500" : "border-gray-300"
-              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              }`}
               onChange={handleInputChange}
               required
             />
@@ -124,7 +124,7 @@ function ContactUs() {
           <div className="mb-5 w-full lg:w-1/2">
             <label
               htmlFor="query"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               Query
             </label>
@@ -135,7 +135,7 @@ function ContactUs() {
               placeholder="Your Query"
               className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${
                 emptyFields ? "border-red-500" : "border-gray-300"
-              } dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white`}
+              }`}
               onChange={handleInputChange}
               required
             ></textarea>
@@ -143,7 +143,7 @@ function ContactUs() {
 
           <button
             type="submit"
-            className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-sm w-full sm:w-auto px-12 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-2xl text-sm w-full sm:w-auto px-12 py-2.5 text-center"
             onClick={handleSubmit}
           >
             Submit

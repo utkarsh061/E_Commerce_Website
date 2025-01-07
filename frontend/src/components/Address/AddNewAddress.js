@@ -61,7 +61,7 @@ function AddNewAddress(props) {
       <div className="mb-5 w-full lg:w-1/2">
         <label
           htmlFor="addressLine1"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           Address Line 1*
         </label>
@@ -83,7 +83,7 @@ function AddNewAddress(props) {
       <div className="mb-5 w-full lg:w-1/2">
         <label
           htmlFor="addressLine2"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           Address Line 2
         </label>
@@ -101,7 +101,7 @@ function AddNewAddress(props) {
           <div className="basis-1/2">
             <label
               htmlFor="city"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               City*
             </label>
@@ -123,7 +123,7 @@ function AddNewAddress(props) {
           <div className="basis-1/2 ">
             <label
               htmlFor="district"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               District*
             </label>
@@ -146,7 +146,7 @@ function AddNewAddress(props) {
       <div className="mb-5 w-full lg:w-1/2">
         <label
           htmlFor="state"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           State*
         </label>
@@ -169,7 +169,7 @@ function AddNewAddress(props) {
         <div className="basis-1/2">
           <label
             htmlFor="country"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Country*
           </label>
@@ -191,7 +191,7 @@ function AddNewAddress(props) {
         <div className="basis-1/2">
           <label
             htmlFor="pinCode"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Pincode*
           </label>

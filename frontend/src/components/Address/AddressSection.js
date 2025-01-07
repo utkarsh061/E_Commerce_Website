@@ -66,7 +66,7 @@ function Addresssection(props){
                     )
                 }): 
                 <NoData text="No Saved Address" height="h-72 mb-2"/>} 
-                <p className="flex justify-end text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
+                <p className="flex justify-end text-sm font-medium text-primary-700 underline hover:no-underline">
                 <span onClick={handleNewAddressClick} className="cursor-pointer">Add New Address</span></p>
                 <div className="flex justify-end mt-4">
                 <input 

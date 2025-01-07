@@ -52,15 +52,15 @@ function SingleProductInfo(props) {
   };
 
   return individualPageItem?.id ? (
-    <div className="flex flex-col text-black items-center shadow border border-gray-200 bg-white rounded-lg md:flex-row md:max-w-6xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div className="flex flex-col text-black items-center shadow border border-gray-200 bg-white rounded-lg md:flex-row md:max-w-6xl hover:bg-gray-100">
     <div>
         <img src={individualPageItem.imgURL} className="object-cover w-96 rounded-l-lg h-96 md:h-96 md:w-96" alt="" />
     </div>
     <div className="flex flex-col justify-between p-6 leading-normal text-center md:text-left">
-        <h5 className="mb-0.5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-0.5 text-2xl font-bold tracking-tight text-gray-900">
             {individualPageItem.title}
         </h5>
-        <p className="mb-2 font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-2 font-normal text-gray-700">
             {individualPageItem.description}
         </p>
         <div className="flex md:flex-col mt-0">
@@ -71,7 +71,7 @@ function SingleProductInfo(props) {
           <form className="max-w-fit md:mt-2 mx-auto md:mx-0">
             <select
               id="categories"
-              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${!isCategorySelected ? 'border-2 border-red-500' : ''}`}
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ${!isCategorySelected ? 'border-2 border-red-500' : ''}`}
               onChange={(e) => {
                 setSelectedCategory(e.target.value);
                 setIsCategorySelected(true);

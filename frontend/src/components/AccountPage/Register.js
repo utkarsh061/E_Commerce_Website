@@ -49,11 +49,10 @@ function Register(props) {
   };
 
   return (
-    <div>
-      <div className="mx-4 my-6">
-        <div className="mt-8">
+      <div className="p-6">
+        <div>
         {(emptyFields || !registerationSuccess) && (
-                <p className="text-red-600 font-medium text-xs my-2 w-full flex justify-center">
+                <p className="text-red-600 font-medium text-xs w-full flex justify-center">
                 {emptyFields ? "All fields are required" : (!registerationSuccess && "Something Error !!! Registration Failed")}
                 </p>
               )}
@@ -120,7 +119,7 @@ function Register(props) {
                     ></FontAwesomeIcon>
                   </button>
                   </div>
-            <div className=" mt-6 text-white bg-gray-700  hover:bg-black px-6 py-2 w-full rounded-3xl flex justify-center">
+            <div className=" mt-6 text-white bg-black hover:bg-gray-800 px-6 py-2 w-full rounded-2xl flex justify-center">
               <input
                 type="submit"
                 value="Register"
@@ -130,7 +129,6 @@ function Register(props) {
           </form>
         </div>
       </div>
-    </div>
   );
 }
 export default Register;

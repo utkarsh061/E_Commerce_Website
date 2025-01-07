@@ -126,7 +126,7 @@ function ForgotPassword(props){
                   ></FontAwesomeIcon>
                 </button>
               </div>
-              <div className=" mt-6 text-white bg-gray-700  hover:bg-black px-6 py-2 w-full rounded-3xl flex justify-center">
+              <div className=" mt-6 text-white bg-black hover:bg-gray-800 underline px-6 py-2 w-full rounded-2xl flex justify-center">
                 <input
                   type="submit"
                   value="Submit"

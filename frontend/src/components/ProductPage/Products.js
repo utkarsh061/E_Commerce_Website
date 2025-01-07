@@ -27,11 +27,11 @@ function Products(){
                     ))}
             </div>
             <div className="flex justify-center my-8">
-                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">1</div></Link>
-                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">2</div></Link>
-                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">3</div></Link>
-                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">4</div></Link>
-                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white rounded">&#8594;</div></Link>
+                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white text-black rounded-md">1</div></Link>
+                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white text-black rounded-md">2</div></Link>
+                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white text-black rounded-md">3</div></Link>
+                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white text-black rounded-md">4</div></Link>
+                <Link href={"/products"}><div className="px-3 py-1 border-2 border-black mx-1 hover:bg-black hover:text-white text-black rounded-md">&#8594;</div></Link>
             </div>
         </div>
     )

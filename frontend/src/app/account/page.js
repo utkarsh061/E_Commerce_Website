@@ -33,33 +33,33 @@ function AccountPage() {
       ) : (
         <div>
           <div className="bg-gradient-to-l from-black to-gray-700">
-            <div className="sm:flex mx-auto my-0 max-w-6xl px-8">
-            <div className="sm:basis-1/2 py-12 flex justify-center">
-              <div className="bg-white w-8/12 sm:w-4/6 rounded">
-                <div className="flex">
-                  <h3
-                    className={`basis-1/2 flex justify-center hover:cursor-pointer ${
-                      !isRegisterPage && "border-b-2 border-black"
-                    } hover:bg-black hover:text-white py-2`}
-                    onClick={() => handleClick("Login")}
-                  >
-                    Login
-                  </h3>
-                  <h3
-                    className={`basis-1/2 flex justify-center hover:cursor-pointer ${
-                      isRegisterPage && "border-b-2 border-black"
-                    } hover:bg-black hover:text-white py-2`}
-                    onClick={(e) => handleClick("Register")}
-                  >
-                    Register
-                  </h3>
+            <div className="sm:flex mx-auto my-0 sm:justify-center max-w-6xl px-8">
+              <div className="py-12 flex justify-center sm:justify-center  ">
+                <div className="bg-white w-full rounded-xl sm:rounded-l-xl sm:rounded-r-none">
+                  <div className="flex">
+                    <h3
+                      className={`basis-1/2 flex justify-center rounded-ss-xl hover:cursor-pointer ${
+                        !isRegisterPage && "border-b-2 border-black"
+                      } hover:bg-black hover:text-white text-black py-2`}
+                      onClick={() => handleClick("Login")}
+                    >
+                      Login
+                    </h3>
+                    <h3
+                      className={`basis-1/2 flex justify-center rounded-se-xl sm:rounded-none hover:cursor-pointer ${
+                        isRegisterPage && "border-b-2 border-black"
+                      } hover:bg-black hover:text-white text-black py-2`}
+                      onClick={(e) => handleClick("Register")}
+                    >
+                      Register
+                    </h3>
+                  </div>
+                  {isRegisterPage ? <Register handleClick={handleClick} setIsModalOpen={setIsModalOpen} /> : <Login setIsModalOpen={setIsModalOpen} setForgotPasswordModal={setForgotPasswordModal}/>}
                 </div>
-                {isRegisterPage ? <Register handleClick={handleClick} setIsModalOpen={setIsModalOpen} /> : <Login setIsModalOpen={setIsModalOpen} setForgotPasswordModal={setForgotPasswordModal}/>}
               </div>
-            </div>
-            <div className="w-1/2 h-1/2 sm:basis-1/2 hidden sm:block my-12 lg:my-0">
-              <img src="/Images/laptop1.jpg" className="py-12 h-full  " />
-            </div>
+              <div className={`${isRegisterPage ? "w-full" : "w-1/2"} hidden sm:block my-12`}>
+                <img src="/Images/laptop1.jpg" className="h-full rounded-r-md" />
+              </div>
             </div>
           </div>
         {isModalOpen &&

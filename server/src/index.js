@@ -21,4 +21,8 @@ app.use(cookieParser())
 app.use("/api/users",userRouter)
 app.use("/api/orders",orderRouter)
 
+app.get("/",(req,res) => {
+    res.json({message:"Hello My Friends"})
+})
+
 export default app;

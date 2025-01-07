@@ -100,7 +100,7 @@ function Cart(){
                                 </div>
                             </div>
 
-                            <div className="sm:flex  items-center justify-between md:order-3 md:justify-end">
+                            <div className="flex flex-col sm:flex-row items-center justify-center md:order-3 md:justify-end">
                                 <div className="flex items-center">
                                     <button
                                         type="button"
@@ -214,7 +214,7 @@ function Cart(){
                     </span>
                     <Link
                     href="/products"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-black underline hover:no-underline"
                     >
                     Continue Shopping
                     </Link>

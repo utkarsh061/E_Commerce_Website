@@ -87,10 +87,9 @@ function SingleProductInfo(props) {
                 </option>
               ))}
             </select>
+            {!isCategorySelected && <p className="text-red-600 font-medium text-xs md:ml-2">Select category</p>}
           </form>
-
-        )}
-        {!isCategorySelected && <p className="text-red-600 font-medium text-xs ml-2">Select category</p>}
+        )}  
         </div>
         <h1 className="mt-4 font-extrabold tracking-wide text-base sm:text-xl text-left">
             Product Details

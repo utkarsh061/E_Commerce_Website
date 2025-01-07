@@ -66,13 +66,13 @@ function Addresssection(props){
                     )
                 }): 
                 <NoData text="No Saved Address" height="h-72 mb-2"/>} 
-                <p className="flex justify-end text-sm font-medium text-primary-700 underline hover:no-underline">
+                <p className="flex justify-end text-sm font-medium text-black underline hover:no-underline">
                 <span onClick={handleNewAddressClick} className="cursor-pointer">Add New Address</span></p>
                 <div className="flex justify-end mt-4">
                 <input 
                 type="button" 
                 value="Place Order" 
-                className={`px-12 py-2 rounded-2xl text-white bg-black  hover:bg-gray-800 ${!isUserLoggedIn ? "cursor-not-allowed" : "cursor-pointer"}`}
+                className={`px-12 py-2 rounded-xl text-white bg-black  hover:bg-gray-800 ${!isUserLoggedIn ? "cursor-not-allowed" : "cursor-pointer"}`}
                 onClick={handlePlaceOrder}
                 disabled={!isUserLoggedIn}
                 />

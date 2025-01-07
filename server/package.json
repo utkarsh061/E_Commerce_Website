@@ -5,7 +5,8 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "start": " nodemon -r dotenv/config --experimental-json-modules src/app.js"
+    "start":"nodemon src/app.js",
+    "dev": " nodemon -r dotenv/config --experimental-json-modules src/app.js"
   },
   "author": "Utkarsh Garg",
   "license": "ISC",

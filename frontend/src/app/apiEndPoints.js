@@ -1,4 +1,4 @@
-const localApiUrl = "http://localhost:8000/api";
+const localApiUrl = "https://e-commerce-website-backend-three.vercel.app/api";
 
 
 // Users URLs

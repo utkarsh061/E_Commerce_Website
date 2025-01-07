@@ -18,7 +18,7 @@ function SingleProduct(){
                 individualPageItem={individualPageItem}
             />
             <div className="my-6">
-                <div className="flex">
+                <div className="flex text-black">
                     <div className="basis-1/2 font-bold text-lg sm:text-2xl mb-2"><h1>More Products</h1></div>
                     <div className="basis-1/2 flex justify-end mb-2">
                         <Link href={"/products"}>

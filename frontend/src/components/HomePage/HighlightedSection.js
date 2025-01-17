@@ -9,7 +9,7 @@ function HighlightedSection(){
                 title="Running Sports Shoes"
                 description="Handpicked collection of vibrant running shoes."
                 imageUrl="/Images/running.jpg"
-                style="h-64 sm:h-96 rounded-xl"
+                style="h-80 sm:h-96 rounded-xl"
             />
             <SecondDesign/>
             <FirstDesign

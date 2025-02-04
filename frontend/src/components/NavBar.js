@@ -78,6 +78,7 @@ function NavBar(){
             href="/"
             className="block py-2 px-3 hover:bg-black md:hover:bg-transparent hover:text-white text-gray-900 rounded md:bg-transparent md:p-0 md:hover:text-blue-700"
             aria-current="page"
+            onClick={toggleMenu}
           >
             Home
           </Link>
@@ -86,6 +87,7 @@ function NavBar(){
           <Link
             href="/products"
             className="block py-2 px-3 text-gray-900 hover:text-white hover:bg-black md:hover:bg-transparent rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+            onClick={toggleMenu}
           >
             Products
           </Link>
@@ -94,6 +96,7 @@ function NavBar(){
           <Link
             href="/about"
             className="block py-2 px-3 text-gray-900 hover:text-white hover:bg-black md:hover:bg-transparent rounded md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+            onClick={toggleMenu}
           >
             About
           </Link>
@@ -102,6 +105,7 @@ function NavBar(){
           <Link
             href="/contact"
             className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+            onClick={toggleMenu}
           >
             Contact Us
           </Link>
@@ -110,6 +114,7 @@ function NavBar(){
           <Link
             href="/account"
             className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+            onClick={toggleMenu}
           >
             Account
           </Link>
@@ -118,6 +123,7 @@ function NavBar(){
           <Link
             href="/cart"
             className="block py-2 px-3 text-gray-900 rounded hover:text-white hover:bg-black md:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+            onClick={toggleMenu}
           >
             Cart
             {cartItems?.length > 0 && (

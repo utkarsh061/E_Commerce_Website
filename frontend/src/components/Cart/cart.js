@@ -68,6 +68,11 @@ function Cart(){
 
     const handleModalMainClick = () => {
         setIsModalOpen(!isModalOpen)
+        router.push("/account")
+    }
+    
+    const handleModalCancelClick = () => {
+        setIsModalOpen(!isModalOpen)
     }
 
     return (
@@ -239,8 +244,8 @@ function Cart(){
             <Modal 
                description="Unable to Proceed !! Please Login to Continue"
                handleMainbuttonClick={handleModalMainClick}
-               handleCancelButtonClick={handleModalMainClick}
-               buttonTitle="Okay"
+               handleCancelButtonClick={handleModalCancelClick}
+               buttonTitle="Proceed to Login"
             />
             }
         </section>

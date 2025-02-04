@@ -29,7 +29,7 @@ function Modal(props){
     
                 {/* Modal Footer */}
                 <div className="mt-6 flex justify-center space-x-2">
-                    {true && <button
+                    {doubleButton && <button
                     className="px-4 py-2 border border-black rounded-xl hover:bg-gray-300"
                     onClick={handleCancelButtonClick}
                     >

@@ -5,11 +5,15 @@ import Link from "next/link";
 import { setCartItems } from "@/app/redux/applicationSlice";
 import NoData from "../NoData";
 import { NumberToString } from "../../app/globalUtils";
+import { useRouter } from "next/navigation";
+import Modal from "../Modal/Modal";
 
 function Cart(){
-    const {cartItems} = useSelector((state) => state.application)
+    const {cartItems,isUserLoggedIn} = useSelector((state) => state.application)
     const dispatch = useDispatch()
+    const router = useRouter();
     const [total,setTotal] = useState("0")
+    const [ isModalOpen , setIsModalOpen ] = useState(false);
 
     useEffect(() => {
         let sum = 0;
@@ -55,6 +59,15 @@ function Cart(){
             ...cartItems.slice(index+1)
         ]
         dispatch(setCartItems(updatedCartItems))
+    }
+
+    const handleCheckoutClick = () => {
+        if(isUserLoggedIn) router.push("/addressdetails")
+            else setIsModalOpen(true)
+    }
+
+    const handleModalMainClick = () => {
+        setIsModalOpen(!isModalOpen)
     }
 
     return (
@@ -200,13 +213,12 @@ function Cart(){
                     </dd>
                     </dl>
                 </div>
-
-                <Link
-                    href="/addressdetails"
-                    className="flex w-full items-center justify-center rounded-lg bg-black hover:bg-gray-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
-                >
+                    <button
+                     className="flex w-full items-center justify-center rounded-lg bg-black hover:bg-gray-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300"
+                     onClick={handleCheckoutClick}
+                    >
                     Proceed to Checkout
-                </Link>
+                    </button>
 
                 <div className="flex items-center justify-center gap-2">
                     <span className="text-sm font-normal text-gray-500">
@@ -223,6 +235,14 @@ function Cart(){
             </div>
             </div>
         </div>
+        {isModalOpen &&
+            <Modal 
+               description="Unable to Proceed !! Please Login to Continue"
+               handleMainbuttonClick={handleModalMainClick}
+               handleCancelButtonClick={handleModalMainClick}
+               buttonTitle="Okay"
+            />
+            }
         </section>
 
     )
